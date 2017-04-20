@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition> 
+        <section id="header-logo">
+            <h1>
+                <h:link outcome="index" >
+                    <h:graphicImage name="img/logo_inv.png" />
+                </h:link>
+            </h1>
+        </section>
+        <section id="header-page-phrase">
+            <!--<h4>La taquilla de los eventos</h4>-->
+            <h4>La agenda de eventos de Andalucía</h4>
+        </section>
+        <section id="header-menu-side">
+            <h2><a id="normalMenuIcon" href="javascript:void(0);" class="icon fa-bars"></a></h2>
+        </section>
+
+        <!--sidebar menu, small screen-->
+        <div class="topnav" id="myTopnav">
+
+            <h2>MENU</h2>
+            <h3><h:link value="Eventos" outcome="index" /></h3>
+            <h3><h:link value="Iniciar sesión" outcome="login" /></h3>
+            <div class="header-search">
+                <span class="searchBox"><input name="header-search-input" placeholder="Buscar" type="text" class="menuSearchButton"/></span>
+                <span class="iconSearchW"><h3><a href="#">Buscar</a></h3></span>
+            </div>
+            <a href="#" class="icon fa-twitter fa-2x"><span class="label-socialNetwork">Twitter</span></a>
+            <a href="#" class="icon fa-facebook fa-2x"><span class="label-socialNetwork">Facebook</span></a>
+        </div>
+        <!--Normal  menu, big screen-->
+        <section id="header-option-icons">
+            <ul class="icons">
+                <li><h:link value="Eventos" outcome="index"  class="icon fa-calendar"/></li>
+                <li><h:link value="Iniciar sesión" outcome="login"  class="icon fa-user-circle"/></li>
+                <li><a href="#" class="fa-twitter header-sn"></a></li>
+                <li><a href="#" class=" fa-facebook header-sn"></a></li>
+            </ul>
+        </section>
+    </ui:composition>	
+</html>
+
