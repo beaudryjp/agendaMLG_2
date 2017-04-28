@@ -2,6 +2,7 @@
 package grupog.agendamlg.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Column;
@@ -30,15 +31,16 @@ public class Destinatario implements Serializable, Comparable<Destinatario> {
     @Column(name="descripcion", nullable=false)
     private String descripcion;
     @ManyToMany(mappedBy="destinatario")
-    private Set<Evento> evento;
+    private List<Evento> evento;
 
-    public Set<Evento> getEvento() {
+    public List<Evento> getEvento() {
         return evento;
     }
 
-    public void setEvento(Set<Evento> evento) {
+    public void setEvento(List<Evento> evento) {
         this.evento = evento;
     }
+    
 
 
     public String getDescripcion() {

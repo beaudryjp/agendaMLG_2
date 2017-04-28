@@ -57,18 +57,18 @@ public class Evento implements Serializable, Comparable{
     private List<Imagen> imagenes;
     @ManyToMany
     @JoinTable(name="jn_etiqueta_id",joinColumns=@JoinColumn(name="id_evento"),inverseJoinColumns=@JoinColumn(name="id_etiqueta"))
-    private Set<Etiqueta> etiqueta;
+    private List<Etiqueta> etiqueta;
     @ManyToOne
     private Localidad localidad;
     @OneToMany(cascade=CascadeType.ALL)
     @JoinTable(name="jn_notificaciones_id",joinColumns=@JoinColumn(name="id_evento"),inverseJoinColumns=@JoinColumn(name="id_notificacion"))
     private List <Notificacion> notificaciones;
     @ManyToMany(mappedBy="megusta")
-    private Set<Usuario> megusta;
+    private List<Usuario> megusta;
     @ManyToMany(mappedBy="sigue")
-    private Set<Usuario> sigue;
+    private List<Usuario> sigue;
     @ManyToMany(mappedBy="asiste")
-    private Set<Usuario> asiste;
+    private List<Usuario> asiste;
     
 //    @OneToMany
     public Evento(){
@@ -198,11 +198,11 @@ public class Evento implements Serializable, Comparable{
         this.comentarios = comentarios;
     }
 
-    public Set<Etiqueta> getEtiqueta() {
+    public List<Etiqueta> getEtiqueta() {
         return etiqueta;
     }
 
-    public void setEtiqueta(Set<Etiqueta> etiqueta) {
+    public void setEtiqueta(List<Etiqueta> etiqueta) {
         this.etiqueta = etiqueta;
     }
 
@@ -222,27 +222,27 @@ public class Evento implements Serializable, Comparable{
         this.notificaciones = notificaciones;
     }
 
-    public Set<Usuario> getMegusta() {
+    public List<Usuario> getMegusta() {
         return megusta;
     }
 
-    public void setMegusta(Set<Usuario> megusta) {
+    public void setMegusta(List<Usuario> megusta) {
         this.megusta = megusta;
     }
 
-    public Set<Usuario> getSigue() {
+    public List<Usuario> getSigue() {
         return sigue;
     }
 
-    public void setSigue(Set<Usuario> sigue) {
+    public void setSigue(List<Usuario> sigue) {
         this.sigue = sigue;
     }
 
-    public Set<Usuario> getAsiste() {
+    public List<Usuario> getAsiste() {
         return asiste;
     }
 
-    public void setAsiste(Set<Usuario> asiste) {
+    public void setAsiste(List<Usuario> asiste) {
         this.asiste = asiste;
     }
     

@@ -2,8 +2,8 @@
 package grupog.agendamlg.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,13 +30,13 @@ public class Etiqueta implements Serializable, Comparable<Etiqueta>  {
     @Column(name="nombre", nullable=false)
     private String nombre;
     @ManyToMany(mappedBy="etiqueta")
-    private Set<Evento> evento;
+    private List<Evento> evento;
 
-    public Set<Evento> getEvento() {
+    public List<Evento> getEvento() {
         return evento;
     }
 
-    public void setEvento(Set<Evento> evento) {
+    public void setEvento(List<Evento> evento) {
         this.evento = evento;
     }
 
