@@ -53,6 +53,8 @@ public class Evento implements Serializable, Comparable{
     @OneToMany(cascade=CascadeType.ALL)
     @JoinTable(name="jn_comentarios_id",joinColumns=@JoinColumn(name="id_evento"),inverseJoinColumns=@JoinColumn(name="id_comentario"))
     private List<Comentario> comentarios;
+    @OneToMany(cascade=CascadeType.ALL)
+    private List<Imagen> imagenes;
     @ManyToMany
     @JoinTable(name="jn_etiqueta_id",joinColumns=@JoinColumn(name="id_evento"),inverseJoinColumns=@JoinColumn(name="id_etiqueta"))
     private Set<Etiqueta> etiqueta;
@@ -100,6 +102,14 @@ public class Evento implements Serializable, Comparable{
 
     public boolean isDestacado() {
         return destacado;
+    }
+
+    public List<Imagen> getImagenes() {
+        return imagenes;
+    }
+
+    public void setImagenes(List<Imagen> imagenes) {
+        this.imagenes = imagenes;
     }
 
     public void setDestacado(boolean destacado) {
