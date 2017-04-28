@@ -26,10 +26,10 @@
                                                 <f:selectItem itemLabel="Malaga"/>
                                             </h:selectOneMenu>
                                         </p:column>
+                                        
                                         <p:column>
-                                            <h:selectOneMenu id="search_locality" class="form-control" >
-                                                <f:selectItem itemLabel="Malaga"/>
-                                                <f:selectItem itemLabel="Marbella"/>
+                                            <h:selectOneMenu id="search_locality" class="form-control">
+                                                <f:selectItems value="#{localidadBean.localidades}" var="localidad" itemLabel="#{localidad.nombre}" itemValue="#{localidad.nombre}" />
                                             </h:selectOneMenu>
                                         </p:column>
                                     </p:row>
@@ -76,43 +76,43 @@
 
             </ui:define>
             <ui:define name="main-content">
-                <p class="lead">eventos proximos</p>
+                <p class="lead"><h2>eventos proximos</h2></p>
+                    <p:dataTable value="#{eventoBean.eventos}" var="evento">
+                        <p:column>
+                            <h3><h:link value="#{evento.titulo}" outcome="event_info" /></h3>
+                           <h4><h:outputText value="#{evento.descripcion}" /></h4>
+                           <h4><h:outputText value="#{evento.horario}"  /> - <h:outputText value="#{evento.precio}"  /></h4>
+                        </p:column>
+
+                    </p:dataTable>
+                <!--
+                    <p:repeat id="eventosProximos" value="#{eventoBean.eventos}" var="evento">
+                        <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+
+                            <p:outputPanel>
+                                <h:panelGrid columns="2" cellpadding="5">
+                                    
+
+                                    <h:outputText value="#{evento.descripcion}" style="font-weight: bold"/>
+
+                                    <h:outputText value="#{evento.horario}" style="font-weight: bold"/>
+                                    
+                                    <h:outputText value="#{evento.precio}" style="font-weight: bold"/>
+                                </h:panelGrid>
+                            </p:outputPanel>
+                        </h:panelGrid>
+                        <hr />
+                    </p:repeat>
+                -->
+                <p class="lead"><h2>princiales eventos</h2></p>
                 <p style="text-align:justify">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque arcu sit amet mauris scelerisque cursus. Sed in luctus sapien, eu elementum ante. Maecenas sagittis ligula nisl, non sodales massa vehicula ac. Nunc sed luctus magna. Nulla vitae
-                    justo mauris. In a tellus sit amet sapien tempor condimentum sed vitae sapien. Mauris tellus lorem, pharetra et venenatis non, faucibus vitae metus. Suspendisse imperdiet mollis laoreet. Fusce eleifend tincidunt viverra. Curabitur
-                    lacinia, diam eu accumsan lobortis, lorem augue iaculis elit, id fringilla nisl dui eget felis. Vestibulum pulvinar ligula sem, in auctor turpis posuere at. In tincidunt id mi imperdiet malesuada. Donec in dui et metus egestas convallis
-                    porttitor sit amet sapien. Vestibulum dui tellus, ullamcorper id felis sit amet, pellentesque pulvinar dolor. In vel imperdiet risus. Curabitur eget neque eget felis rhoncus malesuada.
-                </p> 
-                <p style="text-align:justify">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque arcu sit amet mauris scelerisque cursus. Sed in luctus sapien, eu elementum ante. Maecenas sagittis ligula nisl, non sodales massa vehicula ac. Nunc sed luctus magna. Nulla vitae
-                    justo mauris. In a tellus sit amet sapien tempor condimentum sed vitae sapien. Mauris tellus lorem, pharetra et venenatis non, faucibus vitae metus. Suspendisse imperdiet mollis laoreet. Fusce eleifend tincidunt viverra. Curabitur
-                    lacinia, diam eu accumsan lobortis, lorem augue iaculis elit, id fringilla nisl dui eget felis. Vestibulum pulvinar ligula sem, in auctor turpis posuere at. In tincidunt id mi imperdiet malesuada. Donec in dui et metus egestas convallis
-                    porttitor sit amet sapien. Vestibulum dui tellus, ullamcorper id felis sit amet, pellentesque pulvinar dolor. In vel imperdiet risus. Curabitur eget neque eget felis rhoncus malesuada.
-                </p> 
-                <p style="text-align:justify">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque arcu sit amet mauris scelerisque cursus. Sed in luctus sapien, eu elementum ante. Maecenas sagittis ligula nisl, non sodales massa vehicula ac. Nunc sed luctus magna. Nulla vitae
-                    justo mauris. In a tellus sit amet sapien tempor condimentum sed vitae sapien. Mauris tellus lorem, pharetra et venenatis non, faucibus vitae metus. Suspendisse imperdiet mollis laoreet. Fusce eleifend tincidunt viverra. Curabitur
-                    lacinia, diam eu accumsan lobortis, lorem augue iaculis elit, id fringilla nisl dui eget felis. Vestibulum pulvinar ligula sem, in auctor turpis posuere at. In tincidunt id mi imperdiet malesuada. Donec in dui et metus egestas convallis
-                    porttitor sit amet sapien. Vestibulum dui tellus, ullamcorper id felis sit amet, pellentesque pulvinar dolor. In vel imperdiet risus. Curabitur eget neque eget felis rhoncus malesuada.
-                </p> 
-                <p class="lead">princiales eventos</p>
-                <p style="text-align:justify">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque arcu sit amet mauris scelerisque cursus. Sed in luctus sapien, eu elementum ante. Maecenas sagittis ligula nisl, non sodales massa vehicula ac. Nunc sed luctus magna. Nulla vitae
-                    justo mauris. In a tellus sit amet sapien tempor condimentum sed vitae sapien. Mauris tellus lorem, pharetra et venenatis non, faucibus vitae metus. Suspendisse imperdiet mollis laoreet. Fusce eleifend tincidunt viverra. Curabitur
-                    lacinia, diam eu accumsan lobortis, lorem augue iaculis elit, id fringilla nisl dui eget felis. Vestibulum pulvinar ligula sem, in auctor turpis posuere at. In tincidunt id mi imperdiet malesuada. Donec in dui et metus egestas convallis
-                    porttitor sit amet sapien. Vestibulum dui tellus, ullamcorper id felis sit amet, pellentesque pulvinar dolor. In vel imperdiet risus. Curabitur eget neque eget felis rhoncus malesuada.
-                </p> 
-                <p style="text-align:justify">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque arcu sit amet mauris scelerisque cursus. Sed in luctus sapien, eu elementum ante. Maecenas sagittis ligula nisl, non sodales massa vehicula ac. Nunc sed luctus magna. Nulla vitae
-                    justo mauris. In a tellus sit amet sapien tempor condimentum sed vitae sapien. Mauris tellus lorem, pharetra et venenatis non, faucibus vitae metus. Suspendisse imperdiet mollis laoreet. Fusce eleifend tincidunt viverra. Curabitur
-                    lacinia, diam eu accumsan lobortis, lorem augue iaculis elit, id fringilla nisl dui eget felis. Vestibulum pulvinar ligula sem, in auctor turpis posuere at. In tincidunt id mi imperdiet malesuada. Donec in dui et metus egestas convallis
-                    porttitor sit amet sapien. Vestibulum dui tellus, ullamcorper id felis sit amet, pellentesque pulvinar dolor. In vel imperdiet risus. Curabitur eget neque eget felis rhoncus malesuada.
-                </p> 
-                <p style="text-align:justify">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque arcu sit amet mauris scelerisque cursus. Sed in luctus sapien, eu elementum ante. Maecenas sagittis ligula nisl, non sodales massa vehicula ac. Nunc sed luctus magna. Nulla vitae
-                    justo mauris. In a tellus sit amet sapien tempor condimentum sed vitae sapien. Mauris tellus lorem, pharetra et venenatis non, faucibus vitae metus. Suspendisse imperdiet mollis laoreet. Fusce eleifend tincidunt viverra. Curabitur
-                    lacinia, diam eu accumsan lobortis, lorem augue iaculis elit, id fringilla nisl dui eget felis. Vestibulum pulvinar ligula sem, in auctor turpis posuere at. In tincidunt id mi imperdiet malesuada. Donec in dui et metus egestas convallis
-                    porttitor sit amet sapien. Vestibulum dui tellus, ullamcorper id felis sit amet, pellentesque pulvinar dolor. In vel imperdiet risus. Curabitur eget neque eget felis rhoncus malesuada.
+                    <p:dataTable value="#{eventoBean.eventosDestacados}" var="evento">
+                        <p:column>
+                            <h3><h:link value="#{evento.titulo}" outcome="event_info" /></h3>
+                           <h4><h:outputText value="#{evento.descripcion}" /></h4>
+                           <h4><h:outputText value="#{evento.horario}"  /> - <h:outputText value="#{evento.precio}"  /></h4>
+                        </p:column>
+                    </p:dataTable>
                 </p> 
             </ui:define>
     </ui:composition>

@@ -2,6 +2,7 @@
 package grupog.agendamlg.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -31,7 +32,7 @@ public class Provincia implements Serializable {
     @Column(name="nombre", nullable=false)
     private String nombre;
     @OneToMany(cascade=CascadeType.ALL,mappedBy="provincia")
-    private Set<Localidad> localidades;
+    private List<Localidad> localidades;
 
     public Long getId_provincia() {
         return id_provincia;
@@ -41,11 +42,11 @@ public class Provincia implements Serializable {
         this.id_provincia = id;
     }
 
-    public Set<Localidad> getLocalidades() {
+    public List<Localidad> getLocalidades() {
         return localidades;
     }
 
-    public void setLocalidades(Set<Localidad> localidades) {
+    public void setLocalidades(List<Localidad> localidades) {
         this.localidades = localidades;
     }
 

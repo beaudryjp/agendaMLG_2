@@ -2,6 +2,7 @@
 package grupog.agendamlg.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Column;
@@ -35,13 +36,21 @@ public class Localidad implements Serializable, Comparable<Localidad> {
     @ManyToOne
     private Provincia provincia;
     @OneToMany(mappedBy="localidad")
-    private Set<Evento> evento;
+    private List<Evento> evento;
+
+    public Localidad(String nombre, Provincia provincia) {
+        this.nombre = nombre;
+        this.provincia = provincia;
+    }
     
-    public Set<Evento> getEvento() {
+    public Localidad(){
+    }
+    
+    public List<Evento> getEvento() {
         return evento;
     }
 
-    public void setEvento(Set<Evento> evento) {
+    public void setEvento(List<Evento> evento) {
         this.evento = evento;
     }
     
@@ -108,9 +117,6 @@ public class Localidad implements Serializable, Comparable<Localidad> {
     public int compareTo(Localidad o) {
         return this.getNombre().compareTo(o.getNombre());
     }
-
-   
-
     
 
 }

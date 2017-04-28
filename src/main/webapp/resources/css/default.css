@@ -434,3 +434,8 @@ h4.login-header4 {
 .accordion:target{
     border-top:3px solid #FFCDCD;
 }
+
+#eventosProximos{
+    width: 50%;
+    text-align: justify;
+}

@@ -3,8 +3,10 @@ package grupog.agendamlg.entities;
 
 import com.google.common.collect.ComparisonChain;
 import java.io.Serializable;
-import java.util.Comparator;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -46,6 +48,7 @@ public class Evento implements Serializable, Comparable{
     private String precio;
     private double longitud;
     private double latitud;
+    private boolean destacado;
     
     @OneToMany(cascade=CascadeType.ALL)
     @JoinTable(name="jn_comentarios_id",joinColumns=@JoinColumn(name="id_evento"),inverseJoinColumns=@JoinColumn(name="id_comentario"))
@@ -66,6 +69,20 @@ public class Evento implements Serializable, Comparable{
     private Set<Usuario> asiste;
     
 //    @OneToMany
+    public Evento(){
+    }
+    public Evento(String titulo, String descripcion, Date fecha_inicio, Date fecha_fin, String horario, String precio, double longitud, double latitud,boolean destacado, Localidad localidad) {
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.fecha_inicio = fecha_inicio;
+        this.fecha_fin = fecha_fin;
+        this.horario = horario;
+        this.precio = precio;
+        this.longitud = longitud;
+        this.latitud = latitud;
+        this.destacado = destacado;
+        this.localidad = localidad;
+    }
 //    //@JoinTable(name="jn_rol_id",joinColumns=@JoinColumn(name="id_evento"),inverseJoinColumns=@JoinColumn(name="pk"))
 //    private Set<Rol> rol;
     
@@ -79,6 +96,14 @@ public class Evento implements Serializable, Comparable{
 
     public void setDestinatario(Set<Destinatario> destinatario) {
         this.destinatario = destinatario;
+    }
+
+    public boolean isDestacado() {
+        return destacado;
+    }
+
+    public void setDestacado(boolean destacado) {
+        this.destacado = destacado;
     }
     
     
@@ -116,7 +141,7 @@ public class Evento implements Serializable, Comparable{
     }
 
     public Date getFecha_inicio() {
-        return fecha_inicio;
+        return new GregorianCalendar(fecha_inicio.getYear(), fecha_inicio.getMonth(), fecha_inicio.getDay()).getTime();
     }
 
     public void setFecha_inicio(Date fecha_inicio) {
@@ -124,7 +149,7 @@ public class Evento implements Serializable, Comparable{
     }
 
     public Date getFecha_fin() {
-        return fecha_fin;
+        return new GregorianCalendar(fecha_fin.getYear(), fecha_fin.getMonth(), fecha_fin.getDay()).getTime();
     }
 
     public void setFecha_fin(Date fecha_fin) {
