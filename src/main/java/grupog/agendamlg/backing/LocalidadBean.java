@@ -111,6 +111,22 @@ public class LocalidadBean implements Serializable {
         localidades.add(new Localidad("Villanueva del Trabuco", provincia));
         localidades.add(new Localidad("Vinuela", provincia));
         localidades.add(new Localidad("Yunquera", provincia));
+//        Localidad localidad = new Localidad();
+//        localidad.setNombre("Málaga");
+//        localidad.setProvincia(provincia);
+//        localidades.add(localidad);
+//        localidad.setNombre("Benalmádena");
+//        localidad.setProvincia(provincia);
+//        localidades.add(localidad);
+//        localidad.setNombre("Alhaurín de la Torre");
+//        localidad.setProvincia(provincia);
+//        localidades.add(localidad);
+//        localidad.setNombre("Rincón de la Victoria");
+//        localidad.setProvincia(provincia);
+//        localidades.add(localidad);
+//        localidad.setNombre("Nerja");
+//        localidad.setProvincia(provincia);
+//        localidades.add(localidad);
     }
     
     public List<Localidad> getLocalidades(){
