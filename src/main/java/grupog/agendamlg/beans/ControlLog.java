@@ -45,7 +45,7 @@ public class ControlLog implements Serializable{
         FacesContext ctx = FacesContext.getCurrentInstance();
         ctx.getExternalContext().invalidateSession();
         usuario = null;
-        return "login.xhtml";
+        return "index.xhtml";
     }
     
       public ControlLog() {

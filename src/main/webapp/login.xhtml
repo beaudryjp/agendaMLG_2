@@ -35,6 +35,7 @@
                     <h:inputSecret value = "#{login.contrasenia}" id="login_password"    class="form-control"  />
                     <div id="login-rememberForgot">
                         
+                        <p:selectBooleanCheckbox id="login_remember" />
                         <h:outputText value=" Recuerdame" /><br/>
                         <h:link value="He olvidado mi contraseña" outcome="reset_password" />
 

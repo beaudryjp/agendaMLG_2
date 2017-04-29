@@ -2,10 +2,66 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <ui:composition template="/WEB-INF/templates/template.xhtml">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:composition template="/WEB-INF/templates/template_profile.xhtml">
         <ui:define name="main-content">
-            
+            <div>
+                <h:form id="form">
+                    <p:tabView orientation="right" dynamic="true" cache="true">
+                        <p:tab title="Mis Eventos"  >
+                            <h:panelGrid columns="2" cellpadding="10" >
+                             
+                            </h:panelGrid>
+                        </p:tab>
+                        
+                        <p:tab title="Configuración de cuenta" class="icon fa-user-circle">
+                            <h:panelGroup >
+                                
+                                <table>
+                                    <tr>
+                                        <td><p:outputLabel value="Introduzca nuevo email: " /> </td>
+                                        <td><p:inputText value="#{configuracion.email}" placeholder="#{ControlLog.usuario.email}"/></td>
+                                    </tr>
+
+                                     <tr>
+                                        <td><p:outputLabel value="Introduzca nueva contraseña: " /> </td>
+                                        <td><p:password value="#{configuracion.contrasenia}" /></td>
+                                    </tr>
+                                        <tr>
+                                        <td><p:outputLabel value="Confirmar contraseña: " /> </td>
+                                        <td><p:password value="#{configuracion.contrasenia2}" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td><p:outputLabel value="Introduzca Nombre: " /></td>
+                                        <td><p:inputText value="#{configuracion.nombre}" placeholder="#{ControlLog.usuario.nombre}"/></td>
+                                    </tr>
+                                   
+                                    
+                                </table>
+                                <p:commandButton action ="#{configuracion.modificar}" value ="Modificar Perfil" id="submit"  
+                                styleClass="btn btn-default btn-lg submitButtons" />
+                               
+                            </h:panelGroup>
+                        </p:tab>
+                        
+                         <p:tab title="Notificaciones" class="icon fa-bell">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                
+                            </h:panelGrid>
+                        </p:tab>
+                        <c:if test="#{ControlLog.usuario.getRol_usuario() == 'REDACTOR'}">
+                         <p:tab title="Tareas" class="icon fa-address-book">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                
+                            </h:panelGrid>
+                        </p:tab>
+                        </c:if>
+                    </p:tabView>
+                    
+                </h:form>
+            </div>
         </ui:define>
     </ui:composition>
 </html>

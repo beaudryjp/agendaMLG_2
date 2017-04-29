@@ -30,6 +30,8 @@ public class Usuariobean implements Serializable {
     
     @Inject
     private ControlLog ctrl;
+    @Inject
+    private ConfigurationBean conf;
      
     public Usuariobean(){
          usuarios = new ArrayList<>();
@@ -38,7 +40,12 @@ public class Usuariobean implements Serializable {
         usuario.setRol_usuario(Usuario.Tipo_Rol.REGISTRADO);
         usuario.setPassword_hash("potato");
         
+        Usuario usuario1 = new Usuario("Marie", "Poppo", "Poppo@gmail.com");
+        usuario1.setRol_usuario(Usuario.Tipo_Rol.REDACTOR);
+        usuario1.setPassword_hash("potato");
+        
         usuarios.add(usuario);
+        usuarios.add(usuario1);
       
     }
     
@@ -69,10 +76,14 @@ public class Usuariobean implements Serializable {
         for(Usuario index_user : usuarios) {
             if(index_user.getEmail().equals(email) && index_user.getPassword_hash().equals(contrasenia)) {
                 ctrl.setUsuario(index_user);
+                conf.setControl(ctrl);
+                conf.setUsuario(ctrl.getUsuario());
                 authentication_result_site = ctrl.home();
+                
                 break;
             }
         }
+     
         return authentication_result_site;
     }
 }
