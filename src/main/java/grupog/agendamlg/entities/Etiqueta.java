@@ -32,6 +32,13 @@ public class Etiqueta implements Serializable, Comparable<Etiqueta>  {
     @ManyToMany(mappedBy="etiqueta")
     private List<Evento> evento;
 
+    public Etiqueta(){
+    }
+    
+    public Etiqueta(String nombre){
+        this.nombre = nombre;
+    }
+    
     public List<Evento> getEvento() {
         return evento;
     }

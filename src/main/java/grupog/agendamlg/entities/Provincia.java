@@ -4,7 +4,6 @@ package grupog.agendamlg.entities;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -91,9 +90,5 @@ public class Provincia implements Serializable {
     public String toString() {
         return "Provincia{" + "id_provincia=" + id_provincia + ", nombre=" + nombre + ", localidades=" + localidades + '}';
     }
-
-    
-
-   
 
 }

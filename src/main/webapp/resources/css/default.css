@@ -404,12 +404,16 @@ h4.login-header4 {
 }
 
 #search_form_options input, #search_form_options select, #search_form_options button{
-    font-size: 11px;
+    font-size: 12px;
 }
 
 #search_form_options button{
     float: right;
     padding: 7px;
+}
+
+#search_form_options td{
+    padding: 5px 3px 5px 3px;
 }
 
 #accordion ul{
@@ -435,7 +439,14 @@ h4.login-header4 {
     border-top:3px solid #FFCDCD;
 }
 
-#eventosProximos{
-    width: 50%;
-    text-align: justify;
+.eventLists{
+    width: 99%;
+    margin: 0 auto;
+}
+
+.eventLists h3.eventTitle{
+    border-bottom: 1px dashed #aaa; 
+    border-left: 7px solid #aaa;  
+    border-left: 7px solid rgba(0,0,0,.2); 
+    padding: 5px 15px;
 }

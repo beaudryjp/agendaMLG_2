@@ -310,7 +310,7 @@ header>.login-headerLogo {
     width: 250px;
     
     text-align: center;
-    margin-left: 15px;
+    margin: 25px 0px 0px 15px;
     border: 0px #9bc5c3 dashed;
 }
 
@@ -318,7 +318,7 @@ header>.login-headerLogo {
 #sidebar-ad {
     float: right;
     width: 100%;
-    height: 450px;
+    height: 800px;
     text-align: center;
     padding: 20px;
     margin-left: 20px;

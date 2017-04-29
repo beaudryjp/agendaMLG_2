@@ -66,4 +66,7 @@ $(document).ready(function () {
         $("#search_form_calendar").hide('slow');
         $("#tab1-main").show('slow');
     });
+    $(".eventListDesc").text(function(index, currentText) {
+        return currentText.substring(0, 250).split(" ").slice(0, -1).join(" ") + "...";
+    });
 });

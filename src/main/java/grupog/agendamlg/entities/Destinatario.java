@@ -32,6 +32,14 @@ public class Destinatario implements Serializable, Comparable<Destinatario> {
     private String descripcion;
     @ManyToMany(mappedBy="destinatario")
     private List<Evento> evento;
+    
+    public Destinatario(){
+    }
+    
+    public Destinatario(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    
 
     public List<Evento> getEvento() {
         return evento;
@@ -40,7 +48,6 @@ public class Destinatario implements Serializable, Comparable<Destinatario> {
     public void setEvento(List<Evento> evento) {
         this.evento = evento;
     }
-    
 
 
     public String getDescripcion() {
