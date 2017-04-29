@@ -1,5 +1,7 @@
 package grupog.agendamlg.backing;
 
+import grupog.agendamlg.entities.Destinatario;
+import grupog.agendamlg.entities.Etiqueta;
 import grupog.agendamlg.entities.Evento;
 import grupog.agendamlg.entities.Localidad;
 import grupog.agendamlg.entities.Provincia;
@@ -25,6 +27,9 @@ public class EventoBean implements Serializable {
      * Creates a new instance of EventoBean
      */
     private List<Evento> eventos;
+    private List<Etiqueta> etiquetas;
+    private List<Destinatario> destinatarios;
+    private Date fecha;
 
     public EventoBean() {
     }
@@ -32,8 +37,11 @@ public class EventoBean implements Serializable {
     @PostConstruct
     public void init() {
         eventos = new ArrayList<>();
-
+        etiquetas = new ArrayList<>();
+        destinatarios = new ArrayList<>();
+        //imagenes = new ArrayList<>();
         Provincia provincia = new Provincia();
+        
         provincia.setNombre("Málaga");
 
         Localidad localidad = new Localidad("Málaga", provincia);
@@ -92,33 +100,33 @@ public class EventoBean implements Serializable {
         eventos.add(new Evento("Robotix", "ROBOTIX es una actividad innovadora para desarrollar las habilidades y competencias del siglo XXI, "
                 + "utilizando como plataforma la robótica de LEGO Education",
                 new Date(2017, 5, 20), new Date(2017, 5, 20), "10:00 - 13:00", "gratis", 36.746682, -3.8804524, false, localidad6));
-//        //Localidad
-//        Localidad localidad = new Localidad();
-//        localidad.setNombre("Málaga");
-//        localidad.setProvincia(provincia);
-//        
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy MMM dd");
-//        Calendar calendar = new GregorianCalendar(2017,4,1);
-//        
-//        
-//        Set<Localidad> localidades = new TreeSet<>();
-//        localidades.add(localidad);
-//        provincia.setLocalidades(localidades);
-//        
-//        //Calendar c = new GregorianCalendar();
-//        
-//        eventos = new ArrayList<>();
-//        //Date fecha_inicio, Date fecha_fin, String horario, String precio, double longitud, double latitud, Localidad localidad
-//        eventos.add(new Evento("Murakami", "evento1", new Date(2017, 5, 1), new Date(2017, 5, 3), "10am - 20pm", "gratis", 36.7135979, -4.42488000000003, true,localidad));
-//        eventos.add(new Evento("El Bosco: Vida y Obra", "evento2", new Date(2017, 5, 2), new Date(2017, 5, 6), "7am - 11pm", "10€", 36.7135979, -4.42488000000003, true, localidad));
-//        eventos.add(new Evento("prueba", "hola", new Date(2017, 5, 3), new Date(2017, 5, 6), "10am - 20pm", "gratis", 36.7135979, -4.42488000000003, true, localidad));
-//        eventos.add(new Evento("El Bosco: Vida y Obra2", "evento3", new Date(2017, 5, 4), new Date(2017, 5, 7), "7am - 11pm", "10€", 36.7135979, -4.42488000000003, false, localidad));
-//        eventos.add(new Evento("Murakami3", "evento1", new Date(2017, 5, 5), new Date(2017, 4, 3), "10am - 20pm", "gratis", 36.7135979, -4.42488000000003, false, localidad));
-//        eventos.add(new Evento("El Bosco: Vida y Obra4", "evento4", new Date(2017, 5, 6), new Date(2017, 5, 8), "7am - 11pm", "10€", 36.7135979, -4.42488000000003, false, localidad));
-//        eventos.add(new Evento("Murakami5", "evento1", new Date(2017, 5, 7), new Date(2017, 4, 3), "10am - 20pm", "gratis", 36.7135979, -4.42488000000003, false, localidad));
-//        eventos.add(new Evento("El Bosco: Vida y Obra5", "evento5", new Date(2017, 5, 4), new Date(2017, 5, 9), "7am - 11pm", "10€", 36.7135979, -4.42488000000003, false, localidad));
-//        eventos.add(new Evento("Murakami6", "evento1", new Date(2017, 5, 8), new Date(2017, 4, 3), "10am - 20pm", "gratis", 36.7135979, -4.42488000000003, false, localidad));
-//        eventos.add(new Evento("El Bosco: Vida y Obra6", "evento6", new Date(2017, 5, 9), new Date(2017, 5, 10), "7am - 11pm", "10€", 36.7135979, -4.42488000000003, false, localidad));
+        
+        etiquetas.add(new Etiqueta("Actos académicos"));
+        etiquetas.add(new Etiqueta("Conciertos"));
+        etiquetas.add(new Etiqueta("Espectáculos"));
+        etiquetas.add(new Etiqueta("Cineclub"));
+        etiquetas.add(new Etiqueta("Conferencias"));
+        etiquetas.add(new Etiqueta("Exposiciones"));
+        etiquetas.add(new Etiqueta("Libros"));
+        etiquetas.add(new Etiqueta("Varios"));
+        etiquetas.add(new Etiqueta("Festivales"));
+        etiquetas.add(new Etiqueta("Teatro"));
+        
+        destinatarios.add(new Destinatario("Ancianos"));
+        destinatarios.add(new Destinatario("Niños"));
+        destinatarios.add(new Destinatario("Todos"));
+        
+        eventos.get(0).setImagen_url("img/eventos/murakami.jpg");
+        eventos.get(1).setImagen_url("img/eventos/elbosco.jpg");
+        eventos.get(2).setImagen_url("img/eventos/concierto.jpg");
+        eventos.get(3).setImagen_url("img/eventos/encuentros.jpg");
+        eventos.get(4).setImagen_url("img/eventos/pintura.jpg");
+        eventos.get(5).setImagen_url("img/eventos/bigas_luna.jpg");
+        eventos.get(6).setImagen_url("img/eventos/malaca.jpg");
+        eventos.get(7).setImagen_url("img/eventos/cuentacuentos.jpg");
+        eventos.get(8).setImagen_url("img/eventos/arteninios.jpg");
+        eventos.get(9).setImagen_url("img/eventos/hiphop.jpg");
+        eventos.get(10).setImagen_url("img/eventos/robotix.jpg");
     }
 
     public List<Evento> getEventos() {
@@ -132,7 +140,7 @@ public class EventoBean implements Serializable {
        List<Evento> first_events = eventos.stream().limit(4).collect(Collectors.toList());
        return first_events;
          */
-        return eventos.subList(0, 4);
+        return eventos.subList(0, 3);
     }
 
     public List<Evento> getEventosDestacados() {
@@ -144,4 +152,23 @@ public class EventoBean implements Serializable {
         }
         return evd;
     }
+    
+    public List<Evento> getEventosByFecha(){
+        List<Evento> evf = new ArrayList<>();
+        for (Evento x : eventos) {
+            if (x.getFecha_inicio() == fecha) {
+                evf.add(x);
+            }
+        }
+        return evf;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+    
 }

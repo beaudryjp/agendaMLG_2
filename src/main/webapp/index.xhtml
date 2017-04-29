@@ -65,48 +65,55 @@
                     <p id="tab2-main">
                         <h:form id="search_form_calendar">
                             <p:growl id="growl" showDetail="true" />
-                            <p:calendar id="search_calendar" styleClass="ll-skin-melon" value="#{calendarManagedBean.date}" mode="inline" locale="es">
-                                <p:ajax event="dateSelect" listener="#{calendarManagedBean.onDateSelect}" update="growl" />
+                            <p:calendar id="search_calendar" styleClass="ll-skin-melon" value="#{eventoBean.fecha}" mode="inline" locale="es">
+                                <p:ajax event="dateSelect" listener="#{eventoBean.eventosByFecha}" update="growl" />
                             </p:calendar>
                         </h:form>
                     </p>
                 </div>
                 <div id="sidebar-ad">
-
+                    <a href="http://p141.atemda.com/clickthrough.ashx?ad2vps=cPRFQheSV8YkIUrM8gbWkGs4kpr8l200%2fC2vGrULJ0v6pMAFaIwoZy5yyV%2b4tb0G4EvQqHF25C3QGNV9uAStZPtI4M6WG0qufFNuAHZDl9BePObMfcTYotThf%2bTHFdgrpZa5ZWDAjtPdrst4vKRkVQ%3d%3d">
+                        <img src="https://tpc.googlesyndication.com/simgad/17847285740493173396" width="100%" height="800"/>
+                    </a>
                 </div>
             </div>
 
         </ui:define>
         <ui:define name="main-content">
             <p class="lead"><h2>eventos proximos</h2></p>
-            <p:dataTable value="#{eventoBean.eventos}" var="evento" class="eventLists">
+            <!--<p:dataTable value="#{eventoBean.eventos}" var="evento" id="events" class="eventLists" paginator="true" rows="1">-->
+            <p:dataTable value="#{eventoBean.eventos}" var="evento" id="events" class="eventLists">
+                <p:column>
+                    <!--<p><i class="fa fa-picture-o fa-5x" aria-hidden="true" style="float: left; padding: 10px;"></i></p>-->
+                    <h3 class="eventTitle"><h:link outcome="event_info.xhtml?id=#{events.id}" value="#{evento.titulo}" /></h3>
+                    <div class="imageEventList">
+                        <h:graphicImage name="#{evento.imagen_url}" width="200px" height="200px"/>
+                    </div>
+                    <div>
+                        <p class="eventListDesc"><h:outputText value="#{evento.descripcion}" /></p>
+                        <p><h5>Horario: <h:outputText value="#{evento.horario}"  /></h5></p>
+                        <p><h5>Precio: <h:outputText value="#{evento.precio}"  /></h5></p>
+                    </div>
+                </p:column>
+            </p:dataTable>
+
+            <p class="lead"><h3><h:link value="mostrar más eventos" outcome="registration" /></h3></p>
+            <p class="lead"><h2>eventos destacados</h2></p>
+            <p:dataTable value="#{eventoBean.eventosDestacados}" var="evento" class="eventLists">
                 <p:column>
                     <!--<p><i class="fa fa-picture-o fa-5x" aria-hidden="true" style="float: left; padding: 10px;"></i></p>-->
                     <h3 class="eventTitle"><h:link value="#{evento.titulo}" outcome="event_info" /></h3>
-                    <div style="float:left; width: 150px; height: 150px; padding: 20px; margin:1px 10px 10px 10px; text-align: center; border: 1px dashed #ccc; font-size: 20px;">
-                        img
+                    <div class="imageEventList">
+                        <h:graphicImage name="#{evento.imagen_url}" width="200px" height="200px"/>
                     </div>
                     <div>
-
                         <p class="eventListDesc"><h:outputText value="#{evento.descripcion}" /></p>
                         <p><h5>Horario: <h:outputText value="#{evento.horario}"  /></h5></p>
                         <p><h5>Precio: <h:outputText value="#{evento.precio}"  /></h5></p>
                     </div>
 
                 </p:column>
-
             </p:dataTable>
-            <p><h3><h:link value="mostrar más eventos" outcome="registration" /></h3></p>
-            <p class="lead"><h2>eventos destacados</h2></p>
-            <p style="text-align:justify">
-                <p:dataTable value="#{eventoBean.eventosDestacados}" var="evento">
-                    <p:column>
-                        <h3><h:link value="#{evento.titulo}" outcome="event_info" /></h3>
-                        <p class="eventListDesc"><h:outputText value="#{evento.descripcion}" /></p>
-                        <p><h:outputText value="#{evento.horario}"  /> - <h:outputText value="#{evento.precio}"  /></p>
-                    </p:column>
-                </p:dataTable>
-            </p> 
         </ui:define>
     </ui:composition>
 </html>

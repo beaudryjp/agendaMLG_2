@@ -50,6 +50,7 @@ background: linear-gradient(to right, #E29587, #D66D75);
 header {
     margin-top: 20px;
     padding: 5px;
+    border-bottom: 1px dashed #ccc;
 }
 
 
@@ -204,15 +205,21 @@ header>.login-headerLogo {
 
 #ad1 {
     margin-top: 10px;
+    text-align: center;
+    padding: 10px;
+    border: 0px dashed #fff;
+    
+    /*
     width: auto;
     height: 80;
+    */
 }
 
 #ad1>img {
-    width: 100%;
+    
 }
 
-#ad1, #ad2, #ad3 {
+#ad2, #ad3 {
     text-align: center;
     padding: 20px;
     font-size: 19px;
@@ -317,10 +324,9 @@ header>.login-headerLogo {
 
 #sidebar-ad {
     float: right;
-    width: 100%;
-    height: 800px;
+    
     text-align: center;
-    padding: 20px;
+    
     margin-left: 20px;
     margin-top: 20px;
     font-size: 19px;

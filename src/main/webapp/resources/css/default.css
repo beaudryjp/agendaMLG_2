@@ -365,7 +365,7 @@ h4.login-header4 {
     padding: 4px;
     width: 100%;
     float: right;
-    
+
 }
 
 .search-option p{
@@ -442,11 +442,45 @@ h4.login-header4 {
 .eventLists{
     width: 99%;
     margin: 0 auto;
+    
+}
+
+.eventList p{
+    padding: 10px;
 }
 
 .eventLists h3.eventTitle{
     border-bottom: 1px dashed #aaa; 
     border-left: 7px solid #aaa;  
     border-left: 7px solid rgba(0,0,0,.2); 
-    padding: 5px 15px;
+    padding: 5px 0px 10px 10px;
 }
+
+p.eventListDesc{
+    padding: 10px;
+    line-height: 2em;
+}
+
+.imageEventList{
+    float:left; 
+    margin:1px 20px 10px 10px; 
+    text-align: center; 
+    border: 1px dashed #ccc; 
+    font-size: 20px;
+}
+/*
+p.eventListDesc {
+    font-size: 1em;
+    line-height: 1.25em;
+    margin: 0.625em 0;
+    text-align: justify;
+}
+p.eventListDesc:first-letter {
+    font-size: 1.5em;
+    line-height: 1em;
+}
+p.eventListDesc + p.eventListDesc:first-letter {
+    font-size: 1em;
+    line-height: 1.25em;
+}
+*/

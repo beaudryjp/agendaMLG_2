@@ -1,10 +1,7 @@
-
 package grupog.agendamlg.entities;
 
 import com.google.common.collect.ComparisonChain;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -24,22 +21,23 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
-* Evento.java
-*
-* Mar 31, 2017
-* @author Jean Paul Beaudry
-*/
+ * Evento.java
+ *
+ * Mar 31, 2017
+ *
+ * @author Jean Paul Beaudry
+ */
 @Entity
-public class Evento implements Serializable, Comparable{
+public class Evento implements Serializable, Comparable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id_evento;
     private String titulo;
-    @Column(name="descripcion", nullable=false)
+    @Column(name = "descripcion", nullable = false)
     private String descripcion;
-    @Column(name="fecha_inicio", nullable=false)
+    @Column(name = "fecha_inicio", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date fecha_inicio;
     @Temporal(TemporalType.DATE)
@@ -49,31 +47,38 @@ public class Evento implements Serializable, Comparable{
     private double longitud;
     private double latitud;
     private boolean destacado;
-    
-    @OneToMany(cascade=CascadeType.ALL)
-    @JoinTable(name="jn_comentarios_id",joinColumns=@JoinColumn(name="id_evento"),inverseJoinColumns=@JoinColumn(name="id_comentario"))
+    private String imagen_url;
+    private String imagen_titulo;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "jn_comentarios_id", joinColumns = @JoinColumn(name = "id_evento"), inverseJoinColumns = @JoinColumn(name = "id_comentario"))
     private List<Comentario> comentarios;
-    @OneToMany(cascade=CascadeType.ALL)
-    private List<Imagen> imagenes;
+//    @OneToMany(cascade = CascadeType.ALL)
+//    private List<Imagen> imagenes;
     @ManyToMany
-    @JoinTable(name="jn_etiqueta_id",joinColumns=@JoinColumn(name="id_evento"),inverseJoinColumns=@JoinColumn(name="id_etiqueta"))
+    @JoinTable(name = "jn_etiqueta_id", joinColumns = @JoinColumn(name = "id_evento"), inverseJoinColumns = @JoinColumn(name = "id_etiqueta"))
     private List<Etiqueta> etiqueta;
     @ManyToOne
     private Localidad localidad;
-    @OneToMany(cascade=CascadeType.ALL)
-    @JoinTable(name="jn_notificaciones_id",joinColumns=@JoinColumn(name="id_evento"),inverseJoinColumns=@JoinColumn(name="id_notificacion"))
-    private List <Notificacion> notificaciones;
-    @ManyToMany(mappedBy="megusta")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "jn_notificaciones_id", joinColumns = @JoinColumn(name = "id_evento"), inverseJoinColumns = @JoinColumn(name = "id_notificacion"))
+    private List<Notificacion> notificaciones;
+    @ManyToMany(mappedBy = "megusta")
     private List<Usuario> megusta;
-    @ManyToMany(mappedBy="sigue")
+    @ManyToMany(mappedBy = "sigue")
     private List<Usuario> sigue;
-    @ManyToMany(mappedBy="asiste")
+    @ManyToMany(mappedBy = "asiste")
     private List<Usuario> asiste;
     
+    @ManyToMany
+    @JoinTable(name = "jn_destinatario_id", joinColumns = @JoinColumn(name = "id_evento"), inverseJoinColumns = @JoinColumn(name = "id_destinatario"))
+    private Set<Destinatario> destinatario;
+
 //    @OneToMany
-    public Evento(){
+    public Evento() {
     }
-    public Evento(String titulo, String descripcion, Date fecha_inicio, Date fecha_fin, String horario, String precio, double longitud, double latitud,boolean destacado, Localidad localidad) {
+
+    public Evento(String titulo, String descripcion, Date fecha_inicio, Date fecha_fin, String horario, String precio, double longitud, double latitud, boolean destacado, Localidad localidad) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.fecha_inicio = fecha_inicio;
@@ -85,13 +90,24 @@ public class Evento implements Serializable, Comparable{
         this.destacado = destacado;
         this.localidad = localidad;
     }
-//    //@JoinTable(name="jn_rol_id",joinColumns=@JoinColumn(name="id_evento"),inverseJoinColumns=@JoinColumn(name="pk"))
-//    private Set<Rol> rol;
-    
-    @ManyToMany
-    @JoinTable(name="jn_destinatario_id",joinColumns=@JoinColumn(name="id_evento"),inverseJoinColumns=@JoinColumn(name="id_destinatario"))
-    private Set<Destinatario> destinatario;
 
+    public String getImagen_url() {
+        return imagen_url;
+    }
+
+    public void setImagen_url(String imagen_url) {
+        this.imagen_url = imagen_url;
+    }
+
+    public String getImagen_titulo() {
+        return imagen_titulo;
+    }
+
+    public void setImagen_titulo(String imagen_titulo) {
+        this.imagen_titulo = imagen_titulo;
+    }
+
+    
     public Set<Destinatario> getDestinatario() {
         return destinatario;
     }
@@ -104,19 +120,10 @@ public class Evento implements Serializable, Comparable{
         return destacado;
     }
 
-    public List<Imagen> getImagenes() {
-        return imagenes;
-    }
-
-    public void setImagenes(List<Imagen> imagenes) {
-        this.imagenes = imagenes;
-    }
-
     public void setDestacado(boolean destacado) {
         this.destacado = destacado;
     }
-    
-    
+
     public String getHorario() {
         return horario;
     }
@@ -124,8 +131,7 @@ public class Evento implements Serializable, Comparable{
     public void setHorario(String horarios) {
         this.horario = horarios;
     }
-   
-    
+
     public Long getId_evento() {
         return id_evento;
     }
@@ -245,13 +251,14 @@ public class Evento implements Serializable, Comparable{
     public void setAsiste(List<Usuario> asiste) {
         this.asiste = asiste;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (id_evento != null ? id_evento.hashCode() : 0);
         return hash;
     }
+
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id_evento fields are not set
@@ -272,13 +279,13 @@ public class Evento implements Serializable, Comparable{
 
     @Override
     public int compareTo(Object o) {
-        Evento e2 = (Evento)o;
+        Evento e2 = (Evento) o;
         return ComparisonChain.start()
                 .compare(this.getTitulo(), e2.getTitulo())
                 .compare(this.getLocalidad(), e2.getLocalidad())
                 .compare(this.getFecha_inicio(), e2.getFecha_inicio())
                 .compare(this.getFecha_fin(), e2.getFecha_fin())
-                .result(); 
+                .result();
     }
 
 }
