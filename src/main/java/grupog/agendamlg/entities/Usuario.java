@@ -5,7 +5,6 @@ import com.google.common.collect.ComparisonChain;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -66,13 +65,13 @@ public class Usuario implements Serializable, Comparable {
     private List <Notificacion> notificaciones;
     @ManyToMany
     @JoinTable(name="jn_megusta_id",joinColumns=@JoinColumn(name="id_usuario"),inverseJoinColumns=@JoinColumn(name="id_evento"))
-    private Set<Evento> megusta;
+    private List<Evento> megusta;
     @ManyToMany
     @JoinTable(name="jn_sigue_id",joinColumns=@JoinColumn(name="id_usuario"),inverseJoinColumns=@JoinColumn(name="id_evento"))
-    private Set<Evento> sigue;
+    private List<Evento> sigue;
     @ManyToMany
     @JoinTable(name="jn_asiste_id",joinColumns=@JoinColumn(name="id_usuario"),inverseJoinColumns=@JoinColumn(name="id_evento"))
-    private Set<Evento> asiste;
+    private List<Evento> asiste;
    
 
     public Long getId_usuario() {
@@ -171,27 +170,27 @@ public class Usuario implements Serializable, Comparable {
         this.notificaciones = notificaciones;
     }
 
-    public Set<Evento> getMegusta() {
+    public List<Evento> getMegusta() {
         return megusta;
     }
 
-    public void setMegusta(Set<Evento> megusta) {
+    public void setMegusta(List<Evento> megusta) {
         this.megusta = megusta;
     }
 
-    public Set<Evento> getSigue() {
+    public List<Evento> getSigue() {
         return sigue;
     }
 
-    public void setSigue(Set<Evento> sigue) {
+    public void setSigue(List<Evento> sigue) {
         this.sigue = sigue;
     }
 
-    public Set<Evento> getAsiste() {
+    public List<Evento> getAsiste() {
         return asiste;
     }
 
-    public void setAsiste(Set<Evento> asiste) {
+    public void setAsiste(List<Evento> asiste) {
         this.asiste = asiste;
     }
     
