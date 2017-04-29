@@ -30,7 +30,7 @@ import javax.persistence.UniqueConstraint;
 @Table( uniqueConstraints = @UniqueConstraint(columnNames = {"email","pseudonimo","sal"}))
 public class Usuario implements Serializable, Comparable {
     
-    protected enum Tipo_Rol {
+    public static enum Tipo_Rol {
         REGISTRADO,
         VALIDADO,
         REDACTOR;
@@ -73,7 +73,11 @@ public class Usuario implements Serializable, Comparable {
     @JoinTable(name="jn_asiste_id",joinColumns=@JoinColumn(name="id_usuario"),inverseJoinColumns=@JoinColumn(name="id_evento"))
     private List<Evento> asiste;
    
-
+    public Usuario(String nombre, String apellido, String email){
+        this.nombre = nombre;
+        this.apellidos = apellido;
+        this.email = email;
+    }
     public Long getId_usuario() {
         return id_usuario;
     }
