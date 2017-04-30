@@ -1,4 +1,4 @@
-package grupog.agendamlg.backing;
+package grupog.agendamlg.beans;
 
 import grupog.agendamlg.entities.Etiqueta;
 import grupog.agendamlg.entities.Evento;
@@ -32,19 +32,23 @@ public class EtiquetaBean implements Serializable {
     public void init() {
         etiqueta = "Espectáculos";
         etiquetas = new ArrayList<>();
-        etiquetas.add(new Etiqueta("Actos académicos"));
+//        etiquetas.add(new Etiqueta("Actos académicos"));
+//        etiquetas.add(new Etiqueta("Conciertos"));
+//        etiquetas.add(new Etiqueta("Espectáculos"));
+//        etiquetas.add(new Etiqueta("Cineclub"));
+//        etiquetas.add(new Etiqueta("Exposiciones"));
+//        etiquetas.add(new Etiqueta("Conferencias"));
+//        etiquetas.add(new Etiqueta("Libros"));
+//        etiquetas.add(new Etiqueta("Varios"));
+//        etiquetas.add(new Etiqueta("Festivales"));
+//        etiquetas.add(new Etiqueta("Teatro"));
         etiquetas.add(new Etiqueta("Conciertos"));
         etiquetas.add(new Etiqueta("Espectáculos"));
-        etiquetas.add(new Etiqueta("Cineclub"));
-        etiquetas.add(new Etiqueta("Conferencias"));
         etiquetas.add(new Etiqueta("Exposiciones"));
+        etiquetas.add(new Etiqueta("Conferencias"));
         etiquetas.add(new Etiqueta("Libros"));
         etiquetas.add(new Etiqueta("Varios"));
-        //etiquetas.add(new Etiqueta("Planes con niños"));
-        etiquetas.add(new Etiqueta("Festivales"));
-        //etiquetas.add(new Etiqueta("Cine"));
-        etiquetas.add(new Etiqueta("Teatro"));
-        
+
     }
 
     public List<Etiqueta> getEtiquetas() {

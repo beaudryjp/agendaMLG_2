@@ -69,10 +69,9 @@ public class Evento implements Serializable, Comparable {
     private List<Usuario> sigue;
     @ManyToMany(mappedBy = "asiste")
     private List<Usuario> asiste;
-    
     @ManyToMany
     @JoinTable(name = "jn_destinatario_id", joinColumns = @JoinColumn(name = "id_evento"), inverseJoinColumns = @JoinColumn(name = "id_destinatario"))
-    private Set<Destinatario> destinatario;
+    private List<Destinatario> destinatario;
 
 //    @OneToMany
     public Evento() {
@@ -108,11 +107,11 @@ public class Evento implements Serializable, Comparable {
     }
 
     
-    public Set<Destinatario> getDestinatario() {
+    public List<Destinatario> getDestinatario() {
         return destinatario;
     }
 
-    public void setDestinatario(Set<Destinatario> destinatario) {
+    public void setDestinatario(List<Destinatario> destinatario) {
         this.destinatario = destinatario;
     }
 

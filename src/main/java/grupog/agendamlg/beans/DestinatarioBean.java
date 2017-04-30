@@ -1,4 +1,4 @@
-package grupog.agendamlg.backing;
+package grupog.agendamlg.beans;
 
 import grupog.agendamlg.entities.Destinatario;
 import java.io.Serializable;
@@ -34,6 +34,8 @@ public class DestinatarioBean implements Serializable {
         destinatarios.add(new Destinatario("Ancianos"));
         destinatarios.add(new Destinatario("Niños"));
         destinatarios.add(new Destinatario("Todos"));
+        destinatarios.add(new Destinatario("Adultos"));
+        destinatarios.add(new Destinatario("Jóvenes"));
     }
 
     public List<Destinatario> getDestinatarios() {

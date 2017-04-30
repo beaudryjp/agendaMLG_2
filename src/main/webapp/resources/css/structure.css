@@ -206,7 +206,7 @@ header>.login-headerLogo {
 #ad1 {
     margin-top: 10px;
     text-align: center;
-    padding: 10px;
+    
     border: 0px dashed #fff;
     
     /*
@@ -337,6 +337,7 @@ header>.login-headerLogo {
 
 /*  Basic stucture
 =====================*/
+/*
 #accordion{
     margin:100px auto;
     width:400px;
@@ -359,4 +360,20 @@ header>.login-headerLogo {
 }
 .accordion{
     padding:4px;
+}
+*/
+
+#container-adLeft, #container-adRight{
+    position: relative;
+    
+}
+
+#container-adLeft{
+    float:left;
+    margin-right: 20px;
+}
+
+#container-adRight{
+    float: right;
+    margin-left: 20px;
 }

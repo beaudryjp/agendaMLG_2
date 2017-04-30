@@ -1,5 +1,6 @@
-package grupog.agendamlg.backing;
+package grupog.agendamlg.beans;
 
+import grupog.agendamlg.entities.Comentario;
 import grupog.agendamlg.entities.Destinatario;
 import grupog.agendamlg.entities.Etiqueta;
 import grupog.agendamlg.entities.Evento;
@@ -29,6 +30,12 @@ public class EventoBean implements Serializable {
     private List<Evento> eventos;
     private List<Etiqueta> etiquetas;
     private List<Destinatario> destinatarios;
+    private List<Destinatario> publico_evento;
+    private List<Destinatario> publico_evento2;
+    private List<Destinatario> publico_evento3;
+    private List<Destinatario> publico_evento4;
+    private List<Comentario> comen;
+    private int evento;
     private Date fecha;
 
     public EventoBean() {
@@ -39,7 +46,11 @@ public class EventoBean implements Serializable {
         eventos = new ArrayList<>();
         etiquetas = new ArrayList<>();
         destinatarios = new ArrayList<>();
-        //imagenes = new ArrayList<>();
+        publico_evento = new ArrayList<>();
+        publico_evento2 = new ArrayList<>();
+        publico_evento3 = new ArrayList<>();
+        publico_evento4 = new ArrayList<>();
+        comen = new ArrayList<>();
         Provincia provincia = new Provincia();
         
         provincia.setNombre("Málaga");
@@ -105,8 +116,8 @@ public class EventoBean implements Serializable {
         etiquetas.add(new Etiqueta("Conciertos"));
         etiquetas.add(new Etiqueta("Espectáculos"));
         etiquetas.add(new Etiqueta("Cineclub"));
-        etiquetas.add(new Etiqueta("Conferencias"));
         etiquetas.add(new Etiqueta("Exposiciones"));
+        etiquetas.add(new Etiqueta("Conferencias"));
         etiquetas.add(new Etiqueta("Libros"));
         etiquetas.add(new Etiqueta("Varios"));
         etiquetas.add(new Etiqueta("Festivales"));
@@ -115,18 +126,82 @@ public class EventoBean implements Serializable {
         destinatarios.add(new Destinatario("Ancianos"));
         destinatarios.add(new Destinatario("Niños"));
         destinatarios.add(new Destinatario("Todos"));
+        destinatarios.add(new Destinatario("Adultos"));
+        destinatarios.add(new Destinatario("Jóvenes"));
         
-        eventos.get(0).setImagen_url("img/eventos/murakami.jpg");
+        eventos.get(0).setImagen_url("img/eventos/murakami2.jpg");
         eventos.get(1).setImagen_url("img/eventos/elbosco.jpg");
-        eventos.get(2).setImagen_url("img/eventos/concierto.jpg");
-        eventos.get(3).setImagen_url("img/eventos/encuentros.jpg");
+        eventos.get(2).setImagen_url("img/eventos/concierto2.jpg");
+        eventos.get(3).setImagen_url("img/eventos/encuentros2.jpg");
         eventos.get(4).setImagen_url("img/eventos/pintura.jpg");
         eventos.get(5).setImagen_url("img/eventos/bigas_luna.jpg");
         eventos.get(6).setImagen_url("img/eventos/malaca.jpg");
-        eventos.get(7).setImagen_url("img/eventos/cuentacuentos.jpg");
-        eventos.get(8).setImagen_url("img/eventos/arteninios.jpg");
+        eventos.get(7).setImagen_url("img/eventos/cuentacuentos2.jpg");
+        eventos.get(8).setImagen_url("img/eventos/arteninios2.png");
         eventos.get(9).setImagen_url("img/eventos/hiphop.jpg");
-        eventos.get(10).setImagen_url("img/eventos/robotix.jpg");
+        eventos.get(10).setImagen_url("img/eventos/robotix2.png");
+        
+        eventos.get(0).setId_evento(0L);
+        eventos.get(1).setId_evento(1L);
+        eventos.get(2).setId_evento(2L);
+        eventos.get(3).setId_evento(3L);
+        eventos.get(4).setId_evento(4L);
+        eventos.get(5).setId_evento(5L);
+        eventos.get(6).setId_evento(6L);
+        eventos.get(7).setId_evento(7L);
+        eventos.get(8).setId_evento(8L);
+        eventos.get(9).setId_evento(9L);
+        eventos.get(10).setId_evento(10L);
+        
+        publico_evento.add(destinatarios.get(3));
+        publico_evento.add(destinatarios.get(4));
+        publico_evento2.add(destinatarios.get(1));
+        publico_evento2.add(destinatarios.get(4));
+        publico_evento3.add(destinatarios.get(0));
+        publico_evento3.add(destinatarios.get(3));
+        publico_evento4.add(destinatarios.get(2));
+        eventos.get(0).setDestinatario(publico_evento);
+        eventos.get(1).setDestinatario(publico_evento4);
+        eventos.get(2).setDestinatario(publico_evento4);
+        eventos.get(3).setDestinatario(publico_evento);
+        eventos.get(4).setDestinatario(publico_evento3);
+        eventos.get(5).setDestinatario(publico_evento);
+        eventos.get(6).setDestinatario(publico_evento4);
+        eventos.get(7).setDestinatario(publico_evento2);
+        eventos.get(8).setDestinatario(publico_evento2);
+        eventos.get(9).setDestinatario(publico_evento2);
+        eventos.get(10).setDestinatario(publico_evento2);
+        
+        eventos.get(0).setEtiqueta(etiquetas.subList(5, 7));
+        eventos.get(1).setEtiqueta(etiquetas.subList(4, 5));
+        eventos.get(2).setEtiqueta(etiquetas.subList(1, 3));
+        eventos.get(3).setEtiqueta(etiquetas.subList(5, 7));
+        eventos.get(4).setEtiqueta(etiquetas.subList(4, 5));
+        eventos.get(5).setEtiqueta(etiquetas.subList(5, 7));
+        eventos.get(6).setEtiqueta(etiquetas.subList(4, 5));
+        eventos.get(7).setEtiqueta(etiquetas.subList(6, 8));
+        eventos.get(8).setEtiqueta(etiquetas.subList(7, 8));
+        eventos.get(9).setEtiqueta(etiquetas.subList(2, 3));
+        eventos.get(10).setEtiqueta(etiquetas.subList(7, 8));
+        
+//        Comentario c1 = new Comentario();
+//        Usuario usuario = new Usuario("Susana", "LJ", "SLJ@gmail.com");
+//        usuario.setRol_usuario(Usuario.Tipo_Rol.REGISTRADO);
+//        usuario.setPassword_hash("potato");
+//        
+//        Usuario usuario1 = new Usuario("Marie", "Poppo", "Poppo@gmail.com");
+//        usuario1.setRol_usuario(Usuario.Tipo_Rol.REDACTOR);
+//        usuario1.setPassword_hash("potato");
+//        
+//        usuarios.add(usuario);
+//        usuarios.add(usuario1);
+//        u.setPseudonimo("");
+//        c1.setId_comentario(Long.MIN_VALUE);
+//        
+//        
+//        c1.setUsuario(u);
+//        comen.add(e)
+//        eventos.get(0).setComentarios(new Comentario());
     }
 
     public List<Evento> getEventos() {
@@ -169,6 +244,22 @@ public class EventoBean implements Serializable {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    public List<Etiqueta> getEtiquetas() {
+        return etiquetas;
+    }
+
+    public List<Destinatario> getDestinatarios() {
+        return destinatarios;
+    }
+
+    public Evento getEvento(String e) {
+        return eventos.get(Integer.parseInt(e));
+    }
+
+    public void setEvento(int evento) {
+        this.evento = evento;
     }
     
 }

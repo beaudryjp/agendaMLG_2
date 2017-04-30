@@ -4,16 +4,23 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <ui:composition>
+        <ul style="font-size: 16px;text-transform: lowercase">
+            <ui:repeat value="#{etiquetaBean.etiquetas}" var="item">
+                <li><h:outputText value="#{item.nombre}"/></li>
+            </ui:repeat>
+        </ul>
+        <!--
         <ul>
-            <!--
+            
             <li><a href="#">cine.</a></li>
             <li><a href="#">teatro.</a></li>
             <li><a href="#">exposiciones.</a></li>
             <li><a href="#">.</a></li>
             <li><a href="#">tag5.</a></li>
             <li><a href="#">más.</a></li>
-            -->
+            
         </ul>
+        -->
     </ui:composition>
 </html>
 
