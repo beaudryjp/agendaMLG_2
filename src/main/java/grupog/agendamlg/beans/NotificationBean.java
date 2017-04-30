@@ -7,6 +7,7 @@ package grupog.agendamlg.beans;
 
 import grupog.agendamlg.entities.*;
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -31,7 +32,8 @@ public class NotificationBean implements Serializable {
         notificaciones = new ArrayList<>();
 
         Notificacion not_0 = new Notificacion();
-        not_0.setMensaje("ポテートが好きです");
+        not_0.setMensaje("El evento ha cambiado.");
+        not_0.setFecha(new Date(System.currentTimeMillis()));
 
         notificaciones.add(not_0);
     }

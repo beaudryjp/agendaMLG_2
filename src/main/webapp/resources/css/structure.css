@@ -363,11 +363,23 @@ header>.login-headerLogo {
 }
 
 .mis_notificaciones {
-    border: 1px solid black;
-    padding: 10px;
+    border: 1px solid #95989b;
     margin-bottom: 10px;
-    border-radius: 5px;
-    box-shadow: 1px 1px 10px grey;
-    background-color: lightgrey;
+    border-radius: 2px;
+    box-shadow: 1px 1px 10px #a3a9af;
+    background-color: #edeeef;
     width: 100%;
+}
+
+.mis_notificaciones:hover {
+    background-color: #d0d5db;
+}
+
+.notification-img {
+    text-align: center;
+    margin: 10px;
+}
+
+.notification-date {
+    font-size: 80%;
 }

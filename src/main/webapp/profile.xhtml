@@ -10,20 +10,18 @@
             <div>
                 <h:form id="form">
                     <p:tabView orientation="right" dynamic="true" cache="true">
-                        <p:tab title="Mis Eventos"  >
-                            <h:panelGrid columns="1" cellpadding="10" >
-                                <c:forEach var="item" items="#{evento.eventos}">
-                                    <h:panelGroup  layout="block" styleClass="mis_eventos">
-                                        <h:outputLabel  value="#{item.titulo}" />
-                                        <br></br>
-                                        <h:outputLabel value="#{item.descripcion}" />
-                                    </h:panelGroup>
-                                    
-                                </c:forEach>
-                            </h:panelGrid>
+                        <p:tab title="Mis Eventos">
+                            <c:forEach var="item" items="#{evento.eventos}">
+                                <h:panelGroup  layout="block" styleClass="mis_eventos">
+                                    <h:outputLabel  value="#{item.titulo}" />
+                                    <br></br>
+                                    <h:outputLabel value="#{item.descripcion}" />
+                                </h:panelGroup>
+
+                            </c:forEach>
                         </p:tab>
 
-                        <p:tab title="Configuración de cuenta" class="icon fa-user-circle">
+                        <p:tab title="Configuración de cuenta">
                             <h:panelGroup >
 
                                 <table>
@@ -53,17 +51,28 @@
                             </h:panelGroup>
                         </p:tab>
 
-                        <p:tab title="Notificaciones" class="icon fa-bell">
-                            <h:panelGrid columns="1" cellpadding="10">
-                                <c:forEach var="noti" items="#{notification.notificaciones}">
-                                    <h:panelGroup layout="block" styleClass="mis_notificaciones" id="patata">
-                                        <h:outputLabel value="#{noti.mensaje}" />
-                                        <p:effect type="explode" event="click" for="patata" />
-                                    </h:panelGroup>
-                                </c:forEach>
+                        <p:tab title="Notificaciones">
+                            <c:forEach var="noti" items="#{notification.notificaciones}">
 
+                                <p:panelGrid styleClass="mis_notificaciones" id="notification-board">
+                                    <p:row>
+                                        <p:column rowspan="2">
+                                            <p:graphicImage class="notification-img" name="img/event-general.png" />
+                                        </p:column>
+                                        <p:column >
+                                                <h:outputText value="#{noti.mensaje}" />
+                                        </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column>
+                                            <h:outputText value="#{noti.fecha}" class="notification-date"/> 
+                                        </p:column>
+                                    </p:row>
 
-                            </h:panelGrid>
+                                    <p:effect type="drop" event="click" for="notification-board" />
+                                </p:panelGrid>
+
+                            </c:forEach>
                         </p:tab>
                         <c:if test="#{ControlLog.usuario.getRol_usuario() == 'REDACTOR'}">
                             <p:tab title="Tareas" class="icon fa-address-book">
