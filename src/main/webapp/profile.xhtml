@@ -19,7 +19,7 @@
                                         </p:column>
                                         <p:column>
                                             <h:outputLabel  value="#{item.titulo}" />
-                                            
+
                                         </p:column>
 
                                     </p:row>
@@ -27,14 +27,8 @@
                                         <p:column>
                                             <h:outputLabel value="#{item.descripcion}" />
                                         </p:column>
-                                           
+
                                     </p:row>
-
-
-
-
-
-
 
                                 </p:panelGrid>
 
@@ -95,10 +89,70 @@
                             </c:forEach>
                         </p:tab>
                         <c:if test="#{ControlLog.usuario.getRol_usuario() == 'REDACTOR'}">
-                            <p:tab title="Tareas" class="icon fa-address-book">
-                                <h:panelGrid columns="2" cellpadding="10">
+                            
+                            <p:tab title="Tareas" id="tarea">
+                                
+                                
+                                <c:forEach var="item" items="#{tareas.pendiente}" id="for-tar">
+                                <p:panelGrid styleClass="mis_eventos"  id="panel-tar">
+                                    <p:row>
+                                        <p:column rowspan="2">
+                                            <p:graphicImage class="event-image" name="img/event-general.png"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputLabel  value="#{item.titulo}" />
 
-                                </h:panelGrid>
+                                        </p:column>
+                                        
+                                        <p:column>
+                                            <p:commandButton action="#{tareas.approve(tar)}" value ="HOLA" icon="check-icon"  >
+                                          
+                                            </p:commandButton>
+                                            </p:column>
+
+                                    </p:row>
+                                    <p:row>
+                                        <p:column>
+                                            <h:outputLabel value="#{item.descripcion}" />
+                                        </p:column>
+
+                                    </p:row>
+
+                                </p:panelGrid>
+
+                            </c:forEach>
+                                <!--
+                                <c:forEach var="tar"  items="#{tareas.pendiente}" >
+                                    
+                                   
+                                    
+                                    <p:panelGrid styleClass="mis_notificaciones" id="tareas-board">
+                                        <p:row >
+                                            <p:column rowspan="2">
+                                                <p:graphicImage class="notification-img" name="img/event-general.png" />
+                                            </p:column>
+                                            <p:column >
+                                                <h:outputLabel value="#{tar.titulo}" />
+                                            </p:column>
+                                            <p:column>
+                                               <p:commandButton onclick="#{tareas.approve(tar)}" value ="HOLA" icon="check-icon"  /> 
+                                                
+                                            </p:column>
+                                        </p:row>
+                                        <p:row>
+                                            <p:column>
+                                                <h:outputLabel value="#{tar.descripcion}" class="notification-date"/> 
+                                            </p:column>
+                                           <p:column >
+                                                <p:commandButton value ="" styleClass="btn btn-default btn-lg submitButtons" icon="glyphicon glyphicon-alert"/>
+
+                                            </p:column> 
+                                        </p:row>
+                                        
+                                        <p:effect type="drop" event="click" for="botoncito"  />
+                                    </p:panelGrid>
+                                </c:forEach>
+                                -->
                             </p:tab>
                         </c:if>
                     </p:tabView>
