@@ -8,14 +8,26 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:composition template="/WEB-INF/templates/template.xhtml">
         <ui:define name="main-content">
-            
-
             <!--<h:outputText value="#{param['event']}" />-->
-            <p:dataTable value="#{eventoBean.getEvento(param['event'])}" var="evento" id="events">
+            <p:dataTable value="#{eventoBean.getEvento(param['event'])}" var="evento" id="eventInfo">
 
                 <p:column>
-                    <h3 class="volver"><h:link value="Volver" outcome="index" class="icon fa-chevron-left"/></h3>
-                    <h3 class="eventTitle"><h:link value="#{evento.titulo}" outcome="event_info" /></h3>
+                    <div id="event-goBack">
+                        <h:link value="Volver" outcome="index" class="icon fa-chevron-left"/>
+                    </div>
+                    <!--
+                    <h5 style="margin-bottom: 20px;"><h:link value="Volver" outcome="index" class="icon fa-chevron-left fa-2x"/></h5>
+                    -->
+                    <div style="float: right">
+                        <p><h5 style="font-size: 11px"><h:link id="icon-like" value="" outcome="event_info" class="icon fa-thumbs-up fa-2x"/></h5></p>
+                        <p:tooltip id="tooltipLike" for="icon-like" value="Like" position="right"/>
+                        <p><h5 style="font-size: 11px"><h:link  id="icon-assist" value="" outcome="event_info" class="icon fa fa-users fa-2x"/></h5></p>
+                        <p:tooltip id="tooltipAssist" for="icon-assist" value="Assist" position="right"/>
+                        <p><h5 style="font-size: 11px"><h:link id="icon-follow" value="" outcome="event_info" class="icon fa fa-bell fa-2x"/></h5></p>
+                        <p:tooltip id="tooltipFollow" for="icon-follow" value="Follow" position="right"/>
+                    </div>
+                   
+                    <h2 class="eventTitle"><h:link value="#{evento.titulo}" outcome="event_info" /></h2>
                     <div class="imageEvent">
                         <h:graphicImage name="#{evento.imagen_url}" width="500" height="300"/>
                     </div>
@@ -29,33 +41,37 @@
                                 <h:outputText value="#{provinciaBean.localidad}" />
                             </h:outputText>
                         </p:column>
-
-
-                        <p><h5 style="font-size: 11px"><h:link value="Asistiré" outcome="event_info" class="icon fa-thumbs-up fa-2x"/></h5></p>
-                        <p><h5 style="font-size: 11px"><h:link value="Me gusta" outcome="event_info" class="icon fa fa-users fa-2x"/></h5></p>
-                        <p><h5 style="font-size: 11px"><h:link value="Seguir" outcome="event_info" class="icon fa fa-bell-o fa-2x"/></h5></p>
                         <p>
                             <h5>Público: </h5>
-                            <ul style="font-size: 16px;">
+                            <ul style="font-size: 14px; list-style-type: none">
                                 <ui:repeat value="#{evento.destinatario}" var="dest">
-                                    <li><h:outputText value="#{dest.descripcion}"/></li>
+                                    <li style="padding: 5px;"><blockquote><h:outputText value="#{dest.descripcion}"/></blockquote></li>
                                 </ui:repeat>
                             </ul>
                         </p>
                         <p><h5>Tags:</h5>
-                            <ul style="font-size: 16px;">
-                                <ui:repeat value="#{evento.etiqueta}" var="eti">
-                                    <li><h:outputText value="#{eti.nombre}"/></li>
-                                </ui:repeat>
-                            </ul>
+                            <h:form>
+                                <p:tagCloud model="#{eventoBean.getModel(evento.id_evento)}"></p:tagCloud>
+                            </h:form>
                         </p>
                     </div>
-                    <!--
                     <div>
-                        <p class="eventComen"><h:outputText value="#{evento.comentarios}" /></p>
-
+                        <h4>Comentarios</h4>
+                        <ul style="font-size: 16px; list-style-type: none">
+                            <ui:repeat value="#{evento.comentarios}" var="comen">
+                                <li style="padding: 10px;">
+                                    <blockquote><h:outputText value="#{comen.mensaje}"/></blockquote> 
+                                    <i style="font-size: 14px"><h:outputText value="#{comen.usuario.pseudonimo}"/> - 
+                                        <h:outputText value="#{comen.fecha}">
+                                            <f:convertDateTime pattern="dd/MM/YY" />
+                                        </h:outputText> - 
+                                        <h:outputText value="#{comen.hora}">
+                                            <f:convertDateTime pattern="HH:mm" />
+                                        </h:outputText>
+                                    </i></li>
+                            </ui:repeat>
+                        </ul>
                     </div>
-                    -->
                 </p:column>
             </p:dataTable>
 

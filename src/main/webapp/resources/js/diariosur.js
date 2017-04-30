@@ -20,8 +20,25 @@ PrimeFaces.locales['es'] = {
 
 $(document).ready(function () {
     $(".searchBox").hide();
-    $("#search_form_options").hide();
-    $("#tab1-main").hide();
+    $("#tab2-main").hide();
+    $("#search_form_calendar").hide();
+    var $sidebar   = $("#container-adLeft img"), 
+        $window    = $(window),
+        offset     = $sidebar.offset(),
+        topPadding = 5;
+
+    $window.scroll(function() {
+        if ($window.scrollTop() > offset.top) {
+            $sidebar.stop().animate({
+                marginTop: $window.scrollTop() - offset.top + topPadding
+            });
+        } else {
+            $sidebar.stop().animate({
+                marginTop: 0
+            });
+        }
+    });
+    /*
     $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {
             $('.scrollToTop').fadeIn();
@@ -29,6 +46,7 @@ $(document).ready(function () {
             $('.scrollToTop').fadeOut();
         }
     });
+    */
 
     //Click event to scroll to top
     $('.scrollToTop').click(function () {
@@ -66,7 +84,8 @@ $(document).ready(function () {
         $("#search_form_calendar").hide('slow');
         $("#tab1-main").show('slow');
     });
-    $(".eventListDesc").text(function(index, currentText) {
+    $(".eventListDesc").text(function (index, currentText) {
         return currentText.substring(0, 250).split(" ").slice(0, -1).join(" ") + "...";
     });
+    
 });

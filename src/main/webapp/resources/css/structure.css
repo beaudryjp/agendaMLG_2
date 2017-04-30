@@ -155,7 +155,6 @@ footer>#footer-services-2 {
 }
 
 body>#main-left {
-    padding-right: 20px;
 }
 
 header>.login-headerLogo {
@@ -206,7 +205,7 @@ header>.login-headerLogo {
 #ad1 {
     margin-top: 10px;
     text-align: center;
-    
+    margin-bottom: 20px;
     border: 0px dashed #fff;
     
     /*
@@ -315,7 +314,7 @@ header>.login-headerLogo {
 #search-sidebar {
     float: right;
     width: 250px;
-    
+    height:1000px;
     text-align: center;
     margin: 25px 0px 0px 15px;
     border: 0px #9bc5c3 dashed;
@@ -363,17 +362,17 @@ header>.login-headerLogo {
 }
 */
 
-#container-adLeft, #container-adRight{
-    position: relative;
-    
-}
-
 #container-adLeft{
-    float:left;
-    margin-right: 20px;
+    width: 120px;
+    height: 800px;
+    float: left;
+    margin: 0px 15px 30px 0;
 }
 
-#container-adRight{
-    float: right;
-    margin-left: 20px;
+#container-adLeft img{
+    position: fixed;
+}
+
+#eventInfo td{
+    padding: 30px;
 }

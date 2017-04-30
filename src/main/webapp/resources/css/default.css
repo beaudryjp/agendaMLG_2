@@ -468,6 +468,16 @@ p.eventListDesc{
     border: 1px dashed #ccc; 
     font-size: 20px;
 }
+
+#eventInfo a{
+    font-weight: bold;
+    
+}
+
+#eventInfo a:hover{
+    color: #888;
+    text-decoration: none;
+}
 /*
 p.eventListDesc {
     font-size: 1em;

@@ -31,7 +31,7 @@ import javax.persistence.UniqueConstraint;
 @Table( uniqueConstraints = @UniqueConstraint(columnNames = {"email","pseudonimo","sal"}))
 public class Usuario implements Serializable, Comparable {
     
-    protected enum Tipo_Rol {
+    public enum Tipo_Rol {
         REGISTRADO,
         VALIDADO,
         REDACTOR;
