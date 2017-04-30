@@ -41,9 +41,9 @@
                     <div id="login-rememberForgot">
                         <p:selectBooleanCheckbox id="registration_notifications" />
                         <h:outputText value=" Desea recibir notificaciones por email." /><br/>
-                        <p:selectBooleanCheckbox id="registration_terms"  value="#{registro.acepta}" required="true"  requiredMessage="Debe aceptar los terminos de uso">
+                        <p:selectBooleanCheckbox id="registration_terms"  value="#{registro.acepta}" required="true"  requiredMessage="Debe aceptar los terminos de uso" />
                             
-                        </p:selectBooleanCheckbox>  
+                        
 
                         <h:link value=" Acepta los términos y condiciones de uso." outcome="terms" />
                     </div>

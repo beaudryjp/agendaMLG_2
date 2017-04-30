@@ -415,3 +415,18 @@ header>.login-headerLogo {
 .ui-tabs.ui-tabs-right > .ui-tabs-nav {
    background: transparent !important;
 }
+
+.panel-tareas {
+    background: transparent !important;
+    border: none !important;
+}
+
+.mis-tareas {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.mis-tareas td, .mis-tareas tr {
+    border: none !important;
+    background: #edeeef !important;
+}
