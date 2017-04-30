@@ -205,7 +205,7 @@ header>.login-headerLogo {
 #ad1 {
     margin-top: 10px;
     width: auto;
-    height: 80;
+    height: 80%;
 }
 
 #ad1>img {
@@ -358,28 +358,60 @@ header>.login-headerLogo {
 .mis_eventos {
     border: 1px solid black;
     padding: 10px;
-    width: auto;
+    width: 100%;
     margin-bottom: 10px;
 }
 
-.mis_notificaciones {
+.mis_notificaciones td, .mis_notificaciones tr {
+    border: none !important;
+    background: #edeeef !important;
+}
+
+
+.mis_notificaciones{
+    
     border: 1px solid #95989b;
     margin-bottom: 10px;
     border-radius: 2px;
     box-shadow: 1px 1px 10px #a3a9af;
     background-color: #edeeef;
+    background: transparent !important;
     width: 100%;
 }
 
-.mis_notificaciones:hover {
+.mis_notificaciones td:hover {
     background-color: #d0d5db;
 }
 
 .notification-img {
     text-align: center;
-    margin: 10px;
+    margin: auto;
 }
 
 .notification-date {
     font-size: 80%;
+}
+.correo {
+    
+    border-style: none !important;
+    margin-left: 36%;
+}
+
+.reset-button {
+    margin-left: 30%;
+    
+}
+
+.correo td , .correo tr{
+     background: transparent !important;
+    border-style: none !important;
+ 
+}
+.panelusuario, .panelusuario td {
+    border-style: none;
+    background: transparent !important;
+}
+
+.ui-tabs.ui-tabs-right > .ui-tabs-nav {
+   background: transparent !important;
 }

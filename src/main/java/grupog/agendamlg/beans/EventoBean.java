@@ -88,23 +88,6 @@ public class EventoBean implements Serializable {
         eventos.add(evento_0);
         eventos.add(evento_0);
         
-        
-        
-        Etiqueta actos_academicos = new Etiqueta();
-        Etiqueta conciertos = new Etiqueta();
-        Etiqueta espectaculo = new Etiqueta();
-        
-        actos_academicos.setNombre("Actos academicos");
-        conciertos.setNombre("Conciertos");
-        espectaculo.setNombre("Espectaculo");
-        
-        Destinatario ancianos = new Destinatario();
-        Destinatario ninios = new Destinatario();
-        Destinatario todos = new Destinatario();
-        
-        ancianos.setDescripcion("Ancianos");
-        ninios.setDescripcion("Niños");
-        todos.setDescripcion("Todos");
     }
 
 }

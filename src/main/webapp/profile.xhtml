@@ -9,14 +9,34 @@
         <ui:define name="main-content">
             <div>
                 <h:form id="form">
-                    <p:tabView orientation="right" dynamic="true" cache="true">
-                        <p:tab title="Mis Eventos">
+                    <p:tabView orientation="right" dynamic="true" cache="true" styleClass="panelusuario">
+                        <p:tab title="Mis Eventos" >
                             <c:forEach var="item" items="#{evento.eventos}">
-                                <h:panelGroup  layout="block" styleClass="mis_eventos">
-                                    <h:outputLabel  value="#{item.titulo}" />
-                                    <br></br>
-                                    <h:outputLabel value="#{item.descripcion}" />
-                                </h:panelGroup>
+                                <p:panelGrid styleClass="mis_eventos" >
+                                    <p:row>
+                                        <p:column rowspan="2">
+                                            <p:graphicImage class="event-image" name="img/event-general.png"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputLabel  value="#{item.titulo}" />
+                                            
+                                        </p:column>
+
+                                    </p:row>
+                                    <p:row>
+                                        <p:column>
+                                            <h:outputLabel value="#{item.descripcion}" />
+                                        </p:column>
+                                           
+                                    </p:row>
+
+
+
+
+
+
+
+                                </p:panelGrid>
 
                             </c:forEach>
                         </p:tab>
@@ -55,12 +75,12 @@
                             <c:forEach var="noti" items="#{notification.notificaciones}">
 
                                 <p:panelGrid styleClass="mis_notificaciones" id="notification-board">
-                                    <p:row>
+                                    <p:row >
                                         <p:column rowspan="2">
                                             <p:graphicImage class="notification-img" name="img/event-general.png" />
                                         </p:column>
                                         <p:column >
-                                                <h:outputText value="#{noti.mensaje}" />
+                                            <h:outputText value="#{noti.mensaje}" />
                                         </p:column>
                                     </p:row>
                                     <p:row>
