@@ -38,7 +38,7 @@ public class RegBean implements Serializable {
     }
 
     public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+        this.Nombre =Nombre;
     }
 
     public String getApellidos() {
@@ -107,6 +107,6 @@ public class RegBean implements Serializable {
     
     public void addMessage() {
         String summary = acepta ? "Checked" : "Unchecked";
-        FacesContext.getCurrentInstance().addMessage(FacesMessage.FACES_MESSAGES, new FacesMessage("Debe aceptar los terminos de uso"));
+        FacesContext.getCurrentInstance().addMessage(FacesMessage.FACES_MESSAGES, new  FacesMessage("Debe aceptar los terminos de uso"));
     }
 }
