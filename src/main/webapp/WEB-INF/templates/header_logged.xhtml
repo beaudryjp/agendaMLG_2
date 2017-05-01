@@ -25,28 +25,32 @@ and open the template in the editor.
         </section>
 
         <!--sidebar menu, small screen-->
-        <div class="topnav" id="myTopnav">
-
-            <h2>MENU</h2>
-            <h3><h:link value="Eventos" outcome="index" /></h3>
-            <h3><h:link value="Iniciar sesión" outcome="login" /></h3>
-            <div class="header-search">
-                <span class="searchBox"><input name="header-search-input" placeholder="Buscar" type="text" class="menuSearchButton"/></span>
-                <span class="iconSearchW"><h3><a href="#">Buscar</a></h3></span>
+    
+            <div class="topnav" id="myTopnav">
+                <h:form>
+                <h2>MENU</h2>
+                <h3><h:link value="Eventos" outcome="index" /></h3>
+                <h3><h:link value="Perfil" outcome="profile" /></h3>
+                <h3><h:commandLink value="Cerrar sesion" action="#{ControlLog.logout}" /></h3>
+                <div class="header-search">
+                    <span class="searchBox"><input name="header-search-input" placeholder="Buscar" type="text" class="menuSearchButton"/></span>
+                    <span class="iconSearchW"><h3><a href="#">Buscar</a></h3></span>
+                </div>
+                <a href="#" class="icon fa-twitter fa-2x"><span class="label-socialNetwork">Twitter</span></a>
+                <a href="#" class="icon fa-facebook fa-2x"><span class="label-socialNetwork">Facebook</span></a>
+                </h:form>
             </div>
-            <a href="#" class="icon fa-twitter fa-2x"><span class="label-socialNetwork">Twitter</span></a>
-            <a href="#" class="icon fa-facebook fa-2x"><span class="label-socialNetwork">Facebook</span></a>
-        </div>
+       
         <!--Normal  menu, big screen-->
         <section id="header-option-icons">
             <ul class="icons">
                 <h:form>
-                <li><h:link value="Eventos" outcome="index_loggedin"  class="icon fa-calendar"/></li>
-                <li><h:link value="Perfil" outcome="profile"  class="icon fa-user-circle"/></li>               
-                <li><h:commandLink value="Cerrar Sesión" action="#{ControlLog.logout}"  class="icon fa-user-circle"  /></li>   
-                <li><a href="#" class="fa-twitter header-sn"></a></li>
-                <li><a href="#" class=" fa-facebook header-sn"></a></li>
-                 </h:form>
+                    <li><h:link value="Eventos" outcome="index_loggedin"  class="icon fa-calendar"/></li>
+                    <li><h:link value="Perfil" outcome="profile"  class="icon fa-user-circle"/></li>               
+                    <li><h:commandLink value="Cerrar Sesión" action="#{ControlLog.logout}"  class="icon fa-user-circle"  /></li>   
+                    <li><a href="#" class="fa-twitter header-sn"></a></li>
+                    <li><a href="#" class=" fa-facebook header-sn"></a></li>
+                </h:form>
             </ul>
         </section>
     </ui:composition>	
