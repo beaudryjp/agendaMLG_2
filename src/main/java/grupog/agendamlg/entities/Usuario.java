@@ -64,13 +64,13 @@ public class Usuario implements Serializable, Comparable {
     private List<Comentario> comentarios;
     @OneToMany(cascade=CascadeType.ALL)
     private List <Notificacion> notificaciones;
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(name="jn_megusta_id",joinColumns=@JoinColumn(name="id_usuario"),inverseJoinColumns=@JoinColumn(name="id_evento"))
     private List<Evento> megusta;
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(name="jn_sigue_id",joinColumns=@JoinColumn(name="id_usuario"),inverseJoinColumns=@JoinColumn(name="id_evento"))
     private List<Evento> sigue;
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(name="jn_asiste_id",joinColumns=@JoinColumn(name="id_usuario"),inverseJoinColumns=@JoinColumn(name="id_evento"))
     private List<Evento> asiste;
    

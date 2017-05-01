@@ -25,38 +25,36 @@
                         <p:tooltip id="tooltipAssist" for="icon-assist" value="Assist" position="right"/>
                         <p><h5 style="font-size: 11px"><h:link id="icon-follow" value="" outcome="event_info" class="icon fa fa-bell fa-2x"/></h5></p>
                         <p:tooltip id="tooltipFollow" for="icon-follow" value="Follow" position="right"/>
+                        <p><p:commandLink id="icon-map" style="font-size:20px" styleClass="icon fa fa-map" onclick="PF('gmap').show();" /></p>
+                        <!--<p><h5 style="font-size: 11px"><h:link id="icon-map" class="icon fa fa-map fa-2x"  onclick="PF('gmap').show();"/></h5></p>-->
+                        <p:tooltip id="tooltipMap" for="icon-map" value="Ver mapa" position="right"/>
                     </div>
-                   
+
                     <h2 class="eventTitle"><h:link value="#{evento.titulo}" outcome="event_info" /></h2>
                     <div class="imageEvent">
                         <h:graphicImage name="#{evento.imagen_url}" width="500" height="300"/>
                     </div>
                     <div>
-                        <p class="eventDesc"><h:outputText value="#{evento.descripcion}" /></p>
-                        <p><h5>Horario: <h:outputText value="#{evento.horario}"  /></h5></p>
-                        <p><h5>Precio: <h:outputText value="#{evento.precio}"  /></h5></p>
-                        <p:column>
-                            <h:outputText id="provincia" value="#{provinciaBean.provincia}">
-                                <h:outputText value="#{provinciaBean.provincia}" />
-                                <h:outputText value="#{provinciaBean.localidad}" />
-                            </h:outputText>
-                        </p:column>
+                        <p class="eventDesc"><br/><h:outputText value="#{evento.descripcion}" /></p>
+                        <hr/>
+                        <p><h5 class="h5bold"><h:outputText value="#{evento.localidad.nombre}&nbsp;&nbsp;&nbsp;#{evento.horario}&nbsp;&nbsp;&nbsp;#{evento.precio} "  /></h5></p>
+                        <hr/>
                         <p>
-                            <h5>Público: </h5>
-                            <ul style="font-size: 14px; list-style-type: none">
+                            <ul class="publico">
                                 <ui:repeat value="#{evento.destinatario}" var="dest">
-                                    <li style="padding: 5px;"><blockquote><h:outputText value="#{dest.descripcion}"/></blockquote></li>
+                                    <li style=""><h:outputText value="#{dest.descripcion}"/></li>
                                 </ui:repeat>
                             </ul>
                         </p>
-                        <p><h5>Tags:</h5>
+                        <hr/>
+                        <p>
                             <h:form>
                                 <p:tagCloud model="#{eventoBean.getModel(evento.id_evento)}"></p:tagCloud>
                             </h:form>
                         </p>
                     </div>
                     <div>
-                        <h4>Comentarios</h4>
+                        <h5 class="h5bold">Comentarios</h5>
                         <ul style="font-size: 16px; list-style-type: none">
                             <ui:repeat value="#{evento.comentarios}" var="comen">
                                 <li style="padding: 10px;">
@@ -72,6 +70,31 @@
                             </ui:repeat>
                         </ul>
                     </div>
+                    <div>
+                        <f:view contentType="text/html">
+                            <p:dialog id="gmapDialog" widgetVar="gmap" width="625" height="400" modal="true">
+                                <p:gmap id="gmap" center="#{evento.longitud}, #{evento.latitud}" zoom="15" type="HYBRID" style="width:100%;height:400px" />
+                            </p:dialog>
+                        </f:view>
+                    </div>
+                    <h:form id="formComentario">
+                        <p:dialog header="Añadir comentario" widgetVar="dlg_comen" minHeight="40">
+                            <p:inputText id="eventComentario" placeholder="Comentario" style="margin-right: 10px"/>
+                            <p:commandButton value="Enviar" id="submitComen" actionListener="#{buttonView.buttonAction}"  ajax="false" icon="ui-icon-disk" />
+                        </p:dialog>
+                    </h:form>
+                    <h:form id="formDelete">
+                        <p:dialog header="Borrar evento" widgetVar="dlg_delete" minHeight="40">
+                            <h4><h:link outcome="index" value="Se ha borrado el evento" /></h4>
+                            
+                        </p:dialog>
+                    </h:form>
+                    <p:commandLink id="addComment" styleClass="btn btn-default btn-lg" onclick="PF('dlg_comen').show();" style="font-size:15px;float:left" value="Añadir comentario"/>
+                    <p:commandLink onclick="PF('dlg_delete').show()" value="Eliminar" styleClass="btn btn-default btn-lg" style="font-size: 15px;float:right"/>
+                    <h:link value="Editar" outcome="event_edit"   styleClass="btn btn-default btn-lg" style="font-size:15px;float:right; margin-right: 10px">
+                        <f:param name="event" value="#{evento.id_evento}" />
+                    </h:link>
+
                 </p:column>
             </p:dataTable>
 

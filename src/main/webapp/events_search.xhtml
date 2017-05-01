@@ -16,13 +16,11 @@
                 <ui:include src = "/WEB-INF/templates/search_menu.xhtml" />
             </ui:insert>
             <p class="lead"><h2>eventos</h2></p>
-            <h:form>
-            <p:dataTable value="#{eventoBean.getSearchEventosEtiquetas(param['tag'])}" var="evento" id="searchEventsTags" class="eventLists">
+            <p:dataTable value="#{eventoBean.getSearchEventos()}" var="evento" id="searchEvents" class="eventLists">
                 <ui:insert name="search-sidebar">
                  <ui:include src = "/WEB-INF/templates/event.xhtml" />
                 </ui:insert>
             </p:dataTable>
-            </h:form>
         </ui:define>
     </ui:composition>
 </html>

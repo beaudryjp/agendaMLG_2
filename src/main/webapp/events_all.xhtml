@@ -13,25 +13,14 @@
         </ui:define>
         <ui:define name="main-content">
             <ui:insert name="search-sidebar">
-                <ui:include src = "/WEB-INF/templates/event_search.xhtml" />
+                <ui:include src = "/WEB-INF/templates/search_menu.xhtml" />
             </ui:insert>
             <p class="lead"><h2>eventos</h2></p>
-            <p:dataTable value="#{eventoBean.getSearchEventos()}" var="evento" id="searchEvents" class="eventLists" paginator="true" rows="3">
-                <p:column>
-                    <h3 class="eventTitle">
-                        <h:link value="#{evento.titulo}" outcome="event_info" >
-                            <f:param name="event" value="#{evento.id_evento}" />
-                        </h:link>
-                    </h3>
-                    <div class="imageEventList">
-                        <h:graphicImage name="#{evento.imagen_url}" width="200px" height="200px"/>
-                    </div>
-                    <div>
-                        <p class="eventListDesc"><h:outputText value="#{evento.descripcion}" /></p>
-                        <p><h5>Horario: <h:outputText value="#{evento.horario}"  /></h5></p>
-                        <p><h5>Precio: <h:outputText value="#{evento.precio}"  /></h5></p>
-                    </div>
-                </p:column>
+            <!--<p:dataTable value="#{eventoBean.eventos}" var="evento" id="eventsAll" styleClass="eventLists" paginator="true" rows="3" paginatorPosition="bottom">-->
+            <p:dataTable value="#{eventoBean.eventos}" var="evento" id="eventsAll" styleClass="eventLists">
+                <ui:insert name="search-sidebar">
+                 <ui:include src = "/WEB-INF/templates/event.xhtml" />
+                </ui:insert>
             </p:dataTable>
         </ui:define>
     </ui:composition>

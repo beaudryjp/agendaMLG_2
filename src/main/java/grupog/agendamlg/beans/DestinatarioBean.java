@@ -22,6 +22,7 @@ public class DestinatarioBean implements Serializable {
      * Creates a new instance of PublicoBean
      */
     private List<Destinatario> destinatarios;
+    private List<Destinatario> destinatariosSeleccionados;
     private String destinatario;
 
     public DestinatarioBean() {
@@ -36,6 +37,9 @@ public class DestinatarioBean implements Serializable {
         destinatarios.add(new Destinatario("Todos"));
         destinatarios.add(new Destinatario("Adultos"));
         destinatarios.add(new Destinatario("Jóvenes"));
+        
+        destinatariosSeleccionados = new ArrayList<>();
+        destinatariosSeleccionados.add(new Destinatario("Todos"));
     }
 
     public List<Destinatario> getDestinatarios() {
@@ -55,4 +59,13 @@ public class DestinatarioBean implements Serializable {
     public void setDestinatario(String destinatario) {
         this.destinatario = destinatario;
     }
+
+    public List<Destinatario> getDestinatariosSeleccionados() {
+        return destinatariosSeleccionados;
+    }
+
+    public void setDestinatariosSeleccionados(List<Destinatario> destinatariosSeleccionados) {
+        this.destinatariosSeleccionados = destinatariosSeleccionados;
+    }
+    
 }

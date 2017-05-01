@@ -16,9 +16,9 @@
                 <h:graphicImage name="#{evento.imagen_url}" width="200px" height="200px"/>
             </div>
             <div>
-                <p class="eventListDesc"><h:outputText value="#{evento.descripcion}" /></p>
-                <p><h5>Horario: <h:outputText value="#{evento.horario}"  /></h5></p>
-                <p><h5>Precio: <h:outputText value="#{evento.precio}"  /></h5></p>
+                <p class="eventListDesc"><h:outputText value="#{evento.descripcion.length() gt 200 ? evento.descripcion.substring(0,200).concat('...') : evento.descripcion}" /></p>
+                <p><h5 class="h5bold">Horario: <h:outputText value="#{evento.horario}"  /></h5></p>
+                <p><h5 class="h5bold">Precio: <h:outputText value="#{evento.precio}"  /></h5></p>
             </div>
         </p:column>
     </ui:composition>

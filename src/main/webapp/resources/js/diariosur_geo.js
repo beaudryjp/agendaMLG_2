@@ -1,4 +1,15 @@
-
+function readPicture(input, output)
+{
+    if (input.files && input.files[0])
+    {
+        var reader = new FileReader();
+        reader.onload = function(e)
+        {
+            output.attr('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 function initialise(){
     if(geoPosition.init()){
         geoPosition.getCurrentPosition(success_callback,error_callback,{enableHighAccuracy:true});

@@ -23,6 +23,7 @@ public class EtiquetaBean implements Serializable {
      * Creates a new instance of EtiquetaBean
      */
     private List<Etiqueta> etiquetas;
+    private List<Etiqueta> etiquetasSeleccionados;
     private String etiqueta;
 
     public EtiquetaBean() {
@@ -32,7 +33,7 @@ public class EtiquetaBean implements Serializable {
     public void init() {
         etiqueta = "Todos";
         etiquetas = new ArrayList<>();
-        etiquetas.add(new Etiqueta("Actos académicos"));
+//        etiquetas.add(new Etiqueta("Actos académicos"));
         etiquetas.add(new Etiqueta("Conciertos"));
         etiquetas.add(new Etiqueta("Espectáculos"));
         etiquetas.add(new Etiqueta("Cineclub"));
@@ -42,7 +43,10 @@ public class EtiquetaBean implements Serializable {
         etiquetas.add(new Etiqueta("Varios"));
         etiquetas.add(new Etiqueta("Festivales"));
         etiquetas.add(new Etiqueta("Teatro"));
-//        etiquetas.add(new Etiqueta("Todos"));
+        etiquetas.add(new Etiqueta("Todos"));
+        
+        etiquetasSeleccionados = new ArrayList<>();
+        etiquetasSeleccionados.add(etiquetas.get(3));
 
     }
 
@@ -63,4 +67,13 @@ public class EtiquetaBean implements Serializable {
     public void setEtiqueta(String etiqueta) {
         this.etiqueta = etiqueta;
     }
+
+    public List<Etiqueta> getEtiquetasSeleccionados() {
+        return etiquetasSeleccionados;
+    }
+
+    public void setEtiquetasSeleccionados(List<Etiqueta> etiquetasSeleccionados) {
+        this.etiquetasSeleccionados = etiquetasSeleccionados;
+    }
+    
 }

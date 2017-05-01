@@ -18,6 +18,7 @@ import java.util.Random;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import org.primefaces.model.UploadedFile;
 import org.primefaces.model.tagcloud.DefaultTagCloudItem;
 import org.primefaces.model.tagcloud.DefaultTagCloudModel;
 import org.primefaces.model.tagcloud.TagCloudModel;
@@ -50,6 +51,8 @@ public class EventoBean implements Serializable {
     private String searchEtiqueta;
     private String searchText;
     private String tag;
+    private UploadedFile uploadedPicture;
+    
 
     public EventoBean() {
     }
@@ -309,7 +312,7 @@ public class EventoBean implements Serializable {
         c1.setFecha(new Date(2017, 3, 30));
         c1.setHora(new Time(18, 14, 0));
         c1.setUsuario(usuario);
-        c1.setMensaje("interesante");
+        c1.setMensaje("prueba 1");
         comentarios.add(c1);
 
         c1 = new Comentario();
@@ -318,7 +321,7 @@ public class EventoBean implements Serializable {
         c1.setFecha(new Date(2017, 3, 30));
         c1.setHora(new Time(18, 17, 0));
         c1.setUsuario(usuario);
-        c1.setMensaje("basura");
+        c1.setMensaje("prueba 2");
         comentarios.add(c1);
 
         c1 = new Comentario();
@@ -327,7 +330,7 @@ public class EventoBean implements Serializable {
         c1.setFecha(new Date(2017, 3, 30));
         c1.setHora(new Time(18, 24, 0));
         c1.setUsuario(usuario);
-        c1.setMensaje("caca");
+        c1.setMensaje("prueba 3");
         comentarios.add(c1);
 
         eventos.get(0).setComentarios(comentarios);
@@ -348,6 +351,12 @@ public class EventoBean implements Serializable {
     }
 
     public List<Evento> getEventos() {
+        Collections.sort(eventos, new Comparator<Evento>() {
+            @Override
+            public int compare(Evento o1, Evento o2) {
+                return o1.getFecha_inicio().compareTo(o2.getFecha_inicio());
+            }
+        });
         return eventos;
     }
 

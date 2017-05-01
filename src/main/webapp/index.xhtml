@@ -13,19 +13,26 @@
         </ui:define>
         <ui:define name="main-content">
             <ui:insert name="search-sidebar">
-                <ui:include src = "/WEB-INF/templates/event_search.xhtml" />
+                <ui:include src = "/WEB-INF/templates/search_menu.xhtml" />
             </ui:insert>
             <p class="lead"><h2>eventos proximos</h2></p>
             <!--<p:dataTable value="#{eventoBean.getEventosProximos()}" var="evento" id="events" class="eventLists" paginator="true" rows="1">-->
-            <p:dataTable value="#{eventoBean.getEventosProximos()}" var="evento" id="eventsNext" class="eventLists" styleClass="eventsNext">
+            <p:dataTable value="#{eventoBean.getEventosProximos()}" var="evento" id="eventsNext" styleClass="eventsNext">
                 <ui:insert name="search-sidebar">
                     <ui:include src = "/WEB-INF/templates/event.xhtml" />
                 </ui:insert>
             </p:dataTable>
 
-            <p class="lead"><h3><h:link value="más eventos" outcome="index" class="icon fa-chevron-right"/></h3></p>
-            <p class="lead"><h2>eventos destacados</h2></p>
-            <p:dataTable value="#{eventoBean.eventosDestacados}" var="evento" class="eventLists">
+            <p class="lead">
+                <div id="login-goBack">
+                        
+                </div>
+                <h5 class="moreEvents">
+                    <h:link outcome="events_all" value="más eventos" class="icon fa-chevron-right fa-2x" style="float:right"/>
+                </h5>
+            </p>
+            <p class="lead"><h2 style="margin-top: 20px">eventos destacados</h2></p>
+            <p:dataTable value="#{eventoBean.eventosDestacados}" var="evento">
                 <ui:insert name="search-sidebar">
                     <ui:include src = "/WEB-INF/templates/event.xhtml" />
                 </ui:insert>

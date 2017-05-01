@@ -63,11 +63,11 @@ public class Evento implements Serializable, Comparable {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "jn_notificaciones_id", joinColumns = @JoinColumn(name = "id_evento"), inverseJoinColumns = @JoinColumn(name = "id_notificacion"))
     private List<Notificacion> notificaciones;
-    @ManyToMany(mappedBy = "megusta")
+    @ManyToMany(mappedBy = "megusta", cascade = CascadeType.ALL)
     private List<Usuario> megusta;
-    @ManyToMany(mappedBy = "sigue")
+    @ManyToMany(mappedBy = "sigue", cascade = CascadeType.ALL)
     private List<Usuario> sigue;
-    @ManyToMany(mappedBy = "asiste")
+    @ManyToMany(mappedBy = "asiste", cascade = CascadeType.ALL)
     private List<Usuario> asiste;
     @ManyToMany
     @JoinTable(name = "jn_destinatario_id", joinColumns = @JoinColumn(name = "id_evento"), inverseJoinColumns = @JoinColumn(name = "id_destinatario"))

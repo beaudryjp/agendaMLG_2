@@ -179,7 +179,7 @@ ul.icons a:hover {
 
 #header-tags ul li {
     display: inline-block;
-    padding: 5px;
+    padding: 10px;
     margin-left: 10px;
     margin-right: 10px;
 }
@@ -440,9 +440,7 @@ h4.login-header4 {
 }
 
 .eventLists{
-    width: 99%;
-    margin: 0 auto;
-    
+    width: 100%;
 }
 
 .eventList p{
@@ -469,14 +467,92 @@ p.eventListDesc{
     font-size: 20px;
 }
 
-#eventInfo a{
+#event-goBack a{
     font-weight: bold;
     
 }
 
-#eventInfo a:hover{
+#event-goBack a:hover{
     color: #888;
     text-decoration: none;
+}
+
+.moreEvents a {
+    color: #ECE9E6;
+    font-size: 14px;
+}
+
+.moreEvents a:hover {
+    color: #b0a7a7;
+    text-decoration: none;
+}
+
+#eventsAll table{
+   width: 100%;
+}
+
+ul#headerTags{
+    margin:0 auto;
+    font-size: 13px;
+    text-transform: lowercase; 
+    background-color: #888; 
+    color: #ccc;
+}
+
+h5.h5bold{
+    font-weight: bold;
+}
+
+ul.publico{
+    list-style-type: none;
+    padding:0;
+    margin: 0;
+    height: 40px;
+}
+
+.publico li{
+    margin:5px; 
+    list-style: none;
+    text-align: center;
+    width: 10%;
+    padding: 3px;
+    background-color: #CEECF5;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.ui-panelgrid{
+    padding: 20px;
+} 
+
+.ui-panelgrid td, .ui-panelgrid tr{
+    border-style: none !important;
+    width: 100%;
+    padding: 10px;
+}
+.ui-panelgrid input, .ui-panelgrid input{
+    border-style: none !important;
+    width: 100%;
+}
+
+
+
+.createEventTitle a{
+    color: #FFCDCD;
+}
+
+.createEventTitle a:hover{
+    color: #fff;
+    text-decoration: none;
+}
+
+.eventCreate{
+    border-top: 4px solid #ccc;
+    
+}
+
+.ui-panelgrid-cell{
+    margin: 20px;
 }
 /*
 p.eventListDesc {
