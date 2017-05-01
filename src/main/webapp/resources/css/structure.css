@@ -243,6 +243,30 @@ header>.login-headerLogo {
     box-shadow: inset 0 0 7px #363333;
 }
 
+.pass-container {
+     /*border: 5px solid #fff;*/
+    width: 100%;
+    padding: 40px;
+    margin: 0 auto;
+    margin-top: 30px;
+    /*
+    -moz-box-shadow: 0 0 5px #000;
+    -webkit-box-shadow: 0 0 5px#000;
+    box-shadow: 0 0 5px #000;
+    */
+    -moz-box-shadow: inset 0 0 7px #363333;
+    -webkit-box-shadow: inset 0 0 7px #363333;
+    box-shadow: inset 0 0 7px #363333;
+}
+
+.login-perfil{
+    width: 100%;
+    padding: 40px;
+    margin: 0 auto;
+    margin-top: 30px;
+
+}
+
 
 .container {
     height: 100%;
@@ -355,15 +379,27 @@ header>.login-headerLogo {
     padding:4px;
 }
 
+.reset-password{
+    width: 65%;
+    padding: 40px;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom:200px;
+}
+
+.mis_eventos td,.mis_eventos tr{
+     border: none !important;
+     background: #edeeef !important;
+}
 .mis_eventos {
-    border: 1px solid black;
+    border: none;
     padding: 10px;
     width: 100%;
     margin-bottom: 10px;
 }
 
 .mis_notificaciones td, .mis_notificaciones tr {
-    border: none !important;
+    
     background: #edeeef !important;
 }
 
@@ -376,8 +412,16 @@ header>.login-headerLogo {
     box-shadow: 1px 1px 10px #a3a9af;
     background-color: #edeeef;
     background: transparent !important;
-    width: 100%;
+    width: 100% !important;
+
 }
+
+
+
+#prueba td {
+    width: auto !important;
+}
+
 
 .mis_notificaciones td:hover {
     background-color: #d0d5db;
@@ -392,13 +436,15 @@ header>.login-headerLogo {
     font-size: 80%;
 }
 .correo {
-    
+    margin-top: 10%;
     border-style: none !important;
-    margin-left: 36%;
+    margin-left: 20%;
+    
+    
 }
 
 .reset-button {
-    margin-left: 30%;
+   
     
 }
 
@@ -407,6 +453,13 @@ header>.login-headerLogo {
     border-style: none !important;
  
 }
+
+.correo-anterior{
+    margin-left:80px;
+    color: #4f4f4f
+    
+}
+
 .panelusuario, .panelusuario td {
     border-style: none;
     background: transparent !important;
@@ -429,4 +482,9 @@ header>.login-headerLogo {
 .mis-tareas td, .mis-tareas tr {
     border: none !important;
     background: #edeeef !important;
+}
+
+.correo input,.correo button{
+    padding: 10px;
+    height: auto;
 }

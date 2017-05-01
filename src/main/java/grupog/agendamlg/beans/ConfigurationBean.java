@@ -7,6 +7,7 @@ package grupog.agendamlg.beans;
 
 import grupog.agendamlg.entities.Usuario;
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
@@ -27,6 +28,13 @@ public class ConfigurationBean implements Serializable {
     public ConfigurationBean()
     {
         
+    }
+    
+    @PostConstruct
+    
+    public void init()
+    {
+        usuario = ctrl.getUsuario();
     }
     
     public String getContrasenia2() {
@@ -78,14 +86,14 @@ public class ConfigurationBean implements Serializable {
     
     public void modificar (){
         if(!email.isEmpty()){
-            ctrl.getUsuario().setEmail(email);
+            usuario.setEmail(email);
         } 
         if (!nombre.isEmpty()){
-            ctrl.getUsuario().setNombre(nombre);
+            usuario.setNombre(nombre);
         }
         if(!contrasenia.isEmpty() && !contrasenia2.isEmpty() && contrasenia.equals(contrasenia2)){
-            ctrl.getUsuario().setPassword_hash(contrasenia);
+            usuario.setPassword_hash(contrasenia);
         }
-        System.out.println("usuario");
+        
     } 
 }

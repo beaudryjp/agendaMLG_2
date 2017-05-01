@@ -11,6 +11,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -108,5 +109,8 @@ public class RegBean implements Serializable {
     public void addMessage() {
         String summary = acepta ? "Checked" : "Unchecked";
         FacesContext.getCurrentInstance().addMessage(FacesMessage.FACES_MESSAGES, new  FacesMessage("Debe aceptar los terminos de uso"));
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "What we do in life", "Echoes in eternity.");
+        
+        RequestContext.getCurrentInstance().showMessageInDialog(message);
     }
 }

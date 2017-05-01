@@ -80,10 +80,7 @@ public class TareasBean implements Serializable {
     }
 
     public void approve(Evento e) {
-        System.out.println(e);
-        System.out.println(pendiente);
         pendiente.remove(e);
-        System.out.println(pendiente);
     }
 
 }

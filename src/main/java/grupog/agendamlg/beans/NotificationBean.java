@@ -11,15 +11,17 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 
 /**
  *
  * @author James
  */
-@Named(value = "notification")
-@RequestScoped
+
+@ViewScoped
+@ManagedBean(name = "notification")
 public class NotificationBean implements Serializable {
 
     List<Notificacion> notificaciones;
@@ -32,23 +34,26 @@ public class NotificationBean implements Serializable {
         notificaciones = new ArrayList<>();
 
         Notificacion not_0 = new Notificacion();
+        not_0.setId_notificacion(0L);
         not_0.setMensaje("El evento ha cambiado.");
         not_0.setFecha(new Date(System.currentTimeMillis()));
+        
+    
+        
+         Notificacion not_2 = new Notificacion();
+         not_2.setId_notificacion(1L);
+        not_2.setMensaje("El evento ha sido cancelado de nuevo.");
+        not_2.setFecha(new Date(System.currentTimeMillis()));
 
         notificaciones.add(not_0);
+    
+        notificaciones.add(not_2);
+        
+        System.out.println(notificaciones.get(1).getMensaje());
     }
 
     public void dissapear(Notificacion not) {
-        Notificacion remove = null;
-        for (Notificacion n : notificaciones) {
-            if (n.equals(not)) {
-                remove = not;
-                break;
-            }
-        }
-        if (remove != null) {
-            notificaciones.remove(remove);
-        }
+        notificaciones.remove(not);
     }
 
     public List<Notificacion> getNotificaciones() {
