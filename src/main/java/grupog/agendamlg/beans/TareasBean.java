@@ -82,5 +82,9 @@ public class TareasBean implements Serializable {
     public void approve(Evento e) {
         pendiente.remove(e);
     }
+    
+    public void reject(Evento e) {
+        pendiente.remove(e);
+    }
 
 }
