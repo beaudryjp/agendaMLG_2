@@ -44,10 +44,15 @@ public class Usuariobean implements Serializable {
         usuario1.setRol_usuario(Usuario.Tipo_Rol.REDACTOR);
         usuario1.setPassword_hash("potato");
         
+        Usuario usuario2 = new Usuario("Pepe", "Patata", "Pepe@patata.com");
+        usuario2.setRol_usuario(Usuario.Tipo_Rol.VALIDADO);
+        usuario2.setPassword_hash("potato");
+        
         
         
         usuarios.add(usuario);
         usuarios.add(usuario1);
+        usuarios.add(usuario2);
       
     }
     

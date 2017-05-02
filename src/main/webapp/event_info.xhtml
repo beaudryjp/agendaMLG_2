@@ -19,18 +19,29 @@
                     <h5 style="margin-bottom: 20px;"><h:link value="Volver" outcome="index" class="icon fa-chevron-left fa-2x"/></h5>
                     -->
                     <div style="float: right">
-                        <p><h5 style="font-size: 11px"><h:link id="icon-like" value="" outcome="event_info.xhtml?event=#{evento.id_evento}" class="icon fa-thumbs-up fa-2x"/></h5></p>
-                        <p:tooltip id="tooltipLike" for="icon-like" value="Like" position="right"/>
-                        <p><h5 style="font-size: 11px"><h:link  id="icon-assist" value="" outcome="event_info.xhtml?event=#{evento.id_evento}" class="icon fa fa-users fa-2x"/></h5></p>
-                        <p:tooltip id="tooltipAssist" for="icon-assist" value="Assist" position="right"/>
-                        <p><h5 style="font-size: 11px"><h:link id="icon-follow" value="" outcome="event_info.xhtml?event=#{evento.id_evento}" class="icon fa fa-bell fa-2x"/></h5></p>
-                        <p:tooltip id="tooltipFollow" for="icon-follow" value="Follow" position="right"/>
-                        <p><p:commandLink id="icon-map" style="font-size:20px" styleClass="icon fa fa-map" onclick="PF('gmap').show();" /></p>                     
-                        <p:tooltip id="tooltipMap" for="icon-map" value="Ver mapa" position="right"/>
-                        <p><h5 style="font-size: 11px"><a href="https://twitter.com/share" class="icon fa fa-twitter fa-2x"></a></h5></p>
-                        <p><h5 style="font-size: 11px"><a class="fa fa-google-plus fa-2x" href="https://plus.google.com/share?url=event_info.xhtml?event=#{evento.id_evento}"></a></h5></p>
-                        <p><h5 style="font-size: 11px"><a class="fa fa-facebook fa-2x" href="https://facebook.com/share?url=event_info.xhtml?event=#{evento.id_evento}"></a></h5></p>
 
+                        <c:choose>
+                            <c:when test="#{empty ControlLog.usuario}">
+                                <p><p:commandLink id="icon-map" style="font-size:20px" styleClass="icon fa fa-map" onclick="PF('gmap').show();" /></p>                     
+                                <p:tooltip id="tooltipMap" for="icon-map" value="Ver mapa" position="right"/>
+                                <p><h5 style="font-size: 11px"><a href="https://twitter.com/share" class="icon fa fa-twitter fa-2x"></a></h5></p>
+                                <p><h5 style="font-size: 11px"><a class="fa fa-google-plus fa-2x" href="https://plus.google.com/share?url=event_info.xhtml?event=#{evento.id_evento}"></a></h5></p>
+                                <p><h5 style="font-size: 11px"><a class="fa fa-facebook fa-2x" href="https://facebook.com/share?url=event_info.xhtml?event=#{evento.id_evento}"></a></h5></p>
+                            </c:when>
+                            <c:otherwise>
+                                <p><h5 style="font-size: 11px"><h:link id="icon-like" value="" outcome="event_info.xhtml?event=#{evento.id_evento}" class="icon fa-thumbs-up fa-2x"/></h5></p>
+                                <p:tooltip id="tooltipLike" for="icon-like" value="Like" position="right"/>
+                                <p><h5 style="font-size: 11px"><h:link  id="icon-assist" value="" outcome="event_info.xhtml?event=#{evento.id_evento}" class="icon fa fa-users fa-2x"/></h5></p>
+                                <p:tooltip id="tooltipAssist" for="icon-assist" value="Assist" position="right"/>
+                                <p><h5 style="font-size: 11px"><h:link id="icon-follow" value="" outcome="event_info.xhtml?event=#{evento.id_evento}" class="icon fa fa-bell fa-2x"/></h5></p>
+                                <p:tooltip id="tooltipFollow" for="icon-follow" value="Follow" position="right"/>
+                                <p><p:commandLink id="icon-map" style="font-size:20px" styleClass="icon fa fa-map" onclick="PF('gmap').show();" /></p>                     
+                                <p:tooltip id="tooltipMap" for="icon-map" value="Ver mapa" position="right"/>
+                                <p><h5 style="font-size: 11px"><a href="https://twitter.com/share" class="icon fa fa-twitter fa-2x"></a></h5></p>
+                                <p><h5 style="font-size: 11px"><a class="fa fa-google-plus fa-2x" href="https://plus.google.com/share?url=event_info.xhtml?event=#{evento.id_evento}"></a></h5></p>
+                                <p><h5 style="font-size: 11px"><a class="fa fa-facebook fa-2x" href="https://facebook.com/share?url=event_info.xhtml?event=#{evento.id_evento}"></a></h5></p>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
 
                     <h2 class="eventTitle"><h:link value="#{evento.titulo}" outcome="event_info" /></h2>

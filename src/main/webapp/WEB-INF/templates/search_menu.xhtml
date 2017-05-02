@@ -9,7 +9,7 @@
     <ui:composition>
         <div id="search-sidebar">
             
-            <c:if test="#{ControlLog.usuario.getRol_usuario() == 'REDACTOR' || ControlLog.usuario.getRol_usuario() == 'VALIDADO'}">
+            <c:if test="#{!empty ControlLog.usuario}">
                 <h3 class="search-title createEventTitle"><h:link  outcome="event_create" value="CREAR EVENTO" id="linkCreateEvent"/></h3>
             </c:if>
             
