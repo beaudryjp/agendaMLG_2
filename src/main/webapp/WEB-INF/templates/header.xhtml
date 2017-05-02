@@ -41,11 +41,11 @@
         <!--Normal  menu, big screen-->
         <section id="header-option-icons">
             <ul class="icons">
-                <li><h:link value="Eventos" outcome="events_tags.xhtml?tag=Todos"  class="icon fa-calendar"/></li>
+                <li><h:link value="Eventos" outcome="events_all.xhtml"  class="icon fa-calendar"/></li>
                 <c:choose>
                     <c:when test="#{ControlLog.usuario.getRol_usuario() == 'REDACTOR' || ControlLog.usuario.getRol_usuario() == 'VALIDADO'  || ControlLog.usuario.getRol_usuario() == 'REGISTRADO'}">
                         <li><h:link value="Perfil" outcome="profile"  class="icon fa-user-circle"/></li>               
-                        <li><h:form><h:commandLink value="Cerrar Sesión" action="#{ControlLog.logout}"  class="icon fa-user-circle"  /></h:form></li>  
+                        <li><h:form><h:commandLink id="closeSession" value="Cerrar Sesión" action="#{ControlLog.logout}"  class="icon fa-user-circle"  /></h:form></li>  
                     </c:when>
                     <c:otherwise>
                         <li><h:link value="Iniciar sesión" outcome="login"  class="icon fa-user-circle"/></li>

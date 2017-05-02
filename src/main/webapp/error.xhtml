@@ -10,18 +10,19 @@
                         <h:link value="Volver a la página principal" outcome="index" class="icon fa-chevron-left fa-2x"/>
                     </div>
                 <!-- Show minimal error information -->
-                <!--
+                
                 <p class="lead"><h2>Error #{errorHandler.statusCode}</h2>
                     #{errorHandler.exceptionType}
                 </p>
-                -->
                 
+                <!-- Show full error information -->
+                <!--
                 <p><h:outputText value="Error Code: #{errorHandler.statusCode}" /></p>
                 <p><h:outputText value="Error Description: #{errorHandler.message}" /></p>
                 <p><h:outputText value="Exception Type: #{errorHandler.exceptionType}" /></p>
                 <p><h:outputText value="Exception Class: #{errorHandler.exception}" /></p>
                 <p><h:outputText value="Request URI: #{errorHandler.requestURI}" /></p>
-                
+                -->
             </div>
         </ui:define>
     </ui:composition>

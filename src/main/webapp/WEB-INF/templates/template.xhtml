@@ -30,7 +30,11 @@
                     <ui:include src = "/WEB-INF/templates/header.xhtml" />
                 </ui:insert>
             </header>
-
+            <div id="ad1">
+                <ui:insert name="menu">
+                    <ui:include src = "/WEB-INF/templates/ad_header.xhtml" />
+                </ui:insert>
+            </div>
             <section id="header-tags">
                 <ui:insert name="menu">
                     <ui:include src = "/WEB-INF/templates/header_tags.xhtml" />
@@ -62,6 +66,7 @@
         <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
         <script src="http://maps.google.com/maps/api/js?key=AIzaSyBgwx1lVQzR12Olyi9ISS1ZrDCgarlTYkg" type="text/javascript" ></script>
         <h:outputScript name="js/diariosur.js" />
+        <h:outputScript name="js/ad.js" />
         <h:outputScript name="js/tweet-opt.js" />
 
         <script>!function (d, s, id) {

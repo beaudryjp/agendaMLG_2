@@ -24,7 +24,7 @@
                         <f:validateRegex pattern="[_A-Za-z0-9\-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9\-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]+)$" />
                         </h:inputText>
                    
-                    <h:inputSecret value = "#{login.contrasenia}" id="login_password"    class="form-control"  />
+                    <h:inputSecret value = "#{login.contrasenia}" id="login_password"    class="form-control"  redisplay="true"  />
                     <div id="login-rememberForgot">
                         
                         <p:selectBooleanCheckbox id="login_remember" />

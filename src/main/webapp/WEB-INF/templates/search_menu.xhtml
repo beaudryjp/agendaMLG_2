@@ -8,7 +8,7 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:composition>
         <div id="search-sidebar">
-            
+            <h:outputScript name="js/prime.js" />
             <c:if test="#{!empty ControlLog.usuario}">
                 <h3 class="search-title createEventTitle"><h:link  outcome="event_create" value="CREAR EVENTO" id="linkCreateEvent"/></h3>
             </c:if>

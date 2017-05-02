@@ -42,11 +42,9 @@ public class ControlLog implements Serializable {
     }
 
     public String logout() {
-
-        FacesContext ctx = FacesContext.getCurrentInstance();
-        ctx.getExternalContext().invalidateSession();
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         usuario = null;
-        return "index.xhtml";
+        return "index?faces-redirect=true";
     }
 
     public ControlLog() {
@@ -61,6 +59,6 @@ public class ControlLog implements Serializable {
             url = "events_all.xhtml";
             FacesContext.getCurrentInstance().getExternalContext().dispatch(url + "?facesRedirect=true");
         }
-        
+
     }
 }

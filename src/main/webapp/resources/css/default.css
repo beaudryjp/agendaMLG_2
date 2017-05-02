@@ -323,18 +323,25 @@ h4.login-header4 {
 
 
 #header-menu-side a{
-    padding: 10px;
+    padding: 5px 5px 5px 10px;
+    float: right;
+    position: fixed;
+    top: 0;
+    right: 0;
     background-color: #4d4949;
     -moz-box-shadow: 0 0 15px #262525;
     -webkit-box-shadow: 0 0 15px #262525;
     box-shadow: 0 0 15px #262525;
-    border-radius: 5px;
+    border-radius: 3px;
+    display: none;
+    color: #f1e9e9;
+    text-decoration: none;  
+    font-size: 40px;
+    z-index: 1;
 }
 
 #normalMenuIcon{
-    display: none;
-    color: #f1e9e9;
-    text-decoration: none;
+    
 }
 
 #normalMenuIcon:hover {
