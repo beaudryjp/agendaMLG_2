@@ -417,6 +417,11 @@ public class EventoBean implements Serializable {
     public Evento getEvento(String e) {
         return eventos.get(Integer.parseInt(e));
     }
+    
+    public int getId()
+    {
+        return evento;
+    }
 
     public void setEvento(int evento) {
         this.evento = evento;

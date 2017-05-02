@@ -37,9 +37,13 @@ public class PassBean implements Serializable{
     }
 
     public void validate() {
-        System.out.println("ESTOY AQUI!");
-        
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Correo enviado a:", email);
+        
+        RequestContext.getCurrentInstance().showMessageInDialog(message);
+    }
+    
+    public void like() {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Le has dado like", "PATATA");
         
         RequestContext.getCurrentInstance().showMessageInDialog(message);
     }
