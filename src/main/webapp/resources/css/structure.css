@@ -516,3 +516,7 @@ header>.login-headerLogo {
     padding: 10px !important;
     height: auto !important;
 }
+
+.notification-message-button {
+    text-align: right;
+}

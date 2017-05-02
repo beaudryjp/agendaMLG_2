@@ -22,12 +22,21 @@
 
         <!--sidebar menu, small screen-->
         <div class="topnav" id="myTopnav">
-
-            <h2>MENU</h2>
-            <h3><h:link value="Eventos" outcome="index" /></h3>
-            <h3><h:link value="Iniciar sesión" outcome="login" /></h3>
-            <a href="#" class="icon fa-twitter fa-2x"><span class="label-socialNetwork">Twitter</span></a>
-            <a href="#" class="icon fa-facebook fa-2x"><span class="label-socialNetwork">Facebook</span></a>
+            <h:form>
+                <h2>MENU</h2>
+                <h3><h:link value="Eventos" outcome="index" /></h3>
+                <c:choose>
+                    <c:when test="#{empty ControlLog.usuario}">
+                        <h3><h:link value="Iniciar sesión" outcome="login"/></h3>
+                    </c:when>
+                    <c:otherwise>
+                        <h3><h:link value="Perfil" outcome="profile"/></h3>               
+                        <h3><h:commandLink value="Cerrar Sesión" action="#{ControlLog.logout}"/></h3>  
+                    </c:otherwise>
+                </c:choose>
+                <a href="#" class="icon fa-twitter fa-2x"><span class="label-socialNetwork">Twitter</span></a>
+                <a href="#" class="icon fa-facebook fa-2x"><span class="label-socialNetwork">Facebook</span></a>
+            </h:form>
         </div>
         <!--Normal  menu, big screen-->
         <section id="header-option-icons">
