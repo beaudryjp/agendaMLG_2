@@ -521,15 +521,17 @@ ul.publico{
     display: inline-block;
 }
 
-.ui-panelgrid{
+
+.eventCreate.ui-panelgrid{
     padding: 20px;
 } 
 
-.ui-panelgrid td, .ui-panelgrid tr{
+.eventCreate.ui-panelgrid td, .ui-panelgrid tr{
     border-style: none !important;
     width: 100%;
     padding: 10px;
 }
+
 .ui-panelgrid input, .ui-panelgrid input{
     border-style: none !important;
     width: 100%;

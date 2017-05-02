@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import org.primefaces.model.UploadedFile;
@@ -28,7 +29,7 @@ import org.primefaces.model.tagcloud.TagCloudModel;
  * @author Jean Paul Beaudry
  */
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class EventoBean implements Serializable {
 
     /**
@@ -52,7 +53,6 @@ public class EventoBean implements Serializable {
     private String searchText;
     private String tag;
     private UploadedFile uploadedPicture;
-    
 
     public EventoBean() {
     }
@@ -408,10 +408,6 @@ public class EventoBean implements Serializable {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
-    }
-
-    public List<Etiqueta> getEtiquetas() {
-        return etiquetas;
     }
 
     public List<Destinatario> getDestinatarios() {

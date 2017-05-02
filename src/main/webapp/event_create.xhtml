@@ -8,8 +8,12 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:composition template="/WEB-INF/templates/template.xhtml">
         <ui:define name="main-content">
+            <f:metadata>
+                <f:viewAction action="#{ControlLog.redirectUrl('index.xhtml')}" />
+            </f:metadata>
+
             <div class=" ui-datatable ui-widget"><div class="ui-datatable-tablewrapper">
-                    <h:form id="createEvent">
+                    <h:form>
                         <p:panelGrid class="eventCreate">
                             <p:row>
                                 <p:column colspan="2">

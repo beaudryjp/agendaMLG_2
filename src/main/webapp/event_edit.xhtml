@@ -8,7 +8,9 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:composition template="/WEB-INF/templates/template.xhtml">
         <ui:define name="main-content">
-
+            <f:metadata>
+                <f:viewAction action="#{ControlLog.redirectUrl('index.xhtml')}" />
+            </f:metadata>
             <h:form id="editEvent">
                 <p:dataTable value="#{eventoBean.getEvento(param['event'])}" var="evento" id="eventEdit">
                     <p:column>

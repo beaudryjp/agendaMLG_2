@@ -5,7 +5,6 @@ import com.google.common.collect.ComparisonChain;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -73,8 +72,16 @@ public class Usuario implements Serializable, Comparable {
     @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(name="jn_asiste_id",joinColumns=@JoinColumn(name="id_usuario"),inverseJoinColumns=@JoinColumn(name="id_evento"))
     private List<Evento> asiste;
-   
 
+    public Usuario(String nombre, String apellidos, String email) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.email = email;
+    }
+    
+    public Usuario(){
+    }
+    
     public Long getId_usuario() {
         return id_usuario;
     }

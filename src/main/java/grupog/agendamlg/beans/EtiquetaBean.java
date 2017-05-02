@@ -1,7 +1,6 @@
 package grupog.agendamlg.beans;
 
 import grupog.agendamlg.entities.Etiqueta;
-import grupog.agendamlg.entities.Evento;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,7 +22,6 @@ public class EtiquetaBean implements Serializable {
      * Creates a new instance of EtiquetaBean
      */
     private List<Etiqueta> etiquetas;
-    private List<Etiqueta> etiquetasSeleccionados;
     private String etiqueta;
 
     public EtiquetaBean() {
@@ -44,9 +42,6 @@ public class EtiquetaBean implements Serializable {
         etiquetas.add(new Etiqueta("Festivales"));
         etiquetas.add(new Etiqueta("Teatro"));
         etiquetas.add(new Etiqueta("Todos"));
-        
-        etiquetasSeleccionados = new ArrayList<>();
-        etiquetasSeleccionados.add(etiquetas.get(3));
 
     }
 
@@ -68,12 +63,4 @@ public class EtiquetaBean implements Serializable {
         this.etiqueta = etiqueta;
     }
 
-    public List<Etiqueta> getEtiquetasSeleccionados() {
-        return etiquetasSeleccionados;
-    }
-
-    public void setEtiquetasSeleccionados(List<Etiqueta> etiquetasSeleccionados) {
-        this.etiquetasSeleccionados = etiquetasSeleccionados;
-    }
-    
 }
