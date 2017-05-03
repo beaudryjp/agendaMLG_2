@@ -125,4 +125,14 @@ public class Usuariobean implements Serializable {
         
         return "index?faces-redirect=true";
     }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+    
+    
 }

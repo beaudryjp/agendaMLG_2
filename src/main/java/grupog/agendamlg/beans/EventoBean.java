@@ -7,7 +7,6 @@ import grupog.agendamlg.entities.Evento;
 import grupog.agendamlg.entities.Localidad;
 import grupog.agendamlg.entities.Provincia;
 import grupog.agendamlg.entities.Usuario;
-import grupog.agendamlg.mail.Sendmail;
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -15,16 +14,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import javax.mail.internet.AddressException;
 import org.primefaces.model.UploadedFile;
 import org.primefaces.model.tagcloud.DefaultTagCloudItem;
 import org.primefaces.model.tagcloud.DefaultTagCloudModel;
@@ -43,8 +37,13 @@ public class EventoBean implements Serializable {
      */
     @Inject
     private ControlLog current_user;
+    @Inject
+    private Usuariobean usuario;
     private TagCloudModel model;
     private List<Evento> eventos;
+    private List<Evento> evento_asiste;
+    private List<Evento> evento_gusta;
+    private List<Evento> evento_sigue;
     private List<Etiqueta> etiquetas;
     private List<Destinatario> destinatarios;
     private List<Destinatario> publico_evento;
@@ -61,6 +60,7 @@ public class EventoBean implements Serializable {
     private String searchText;
     private String tag;
     private String evento_info;
+    private int event_type;
     private UploadedFile uploadedPicture;
 
     public EventoBean() {
@@ -306,13 +306,13 @@ public class EventoBean implements Serializable {
         eventos.get(10).setEtiqueta(e);
 
         Comentario c1 = new Comentario();
-        Usuario usuario = new Usuario();
-        usuario.setNombre("Susana");
-        usuario.setApellidos("LJ");
-        usuario.setEmail("SLJ@gmail.com");
-        usuario.setRol_usuario(Usuario.Tipo_Rol.REGISTRADO);
-        usuario.setPassword_hash("potato");
-        usuario.setPseudonimo("susana");
+//        Usuario usuario = new Usuario();
+//        usuario.setNombre("Susana");
+//        usuario.setApellidos("LJ");
+//        usuario.setEmail("SLJ@gmail.com");
+//        usuario.setRol_usuario(Usuario.Tipo_Rol.REGISTRADO);
+//        usuario.setPassword_hash("potato");
+//        usuario.setPseudonimo("susana");
 
 //        DateTime dt = new DateTime(new Date(2017, 4, 30));
 //        dt.
@@ -320,7 +320,7 @@ public class EventoBean implements Serializable {
         c1.setEvento(eventos.get(0));
         c1.setFecha(new Date(2017, 3, 30));
         c1.setHora(new Time(18, 14, 0));
-        c1.setUsuario(usuario);
+        c1.setUsuario(usuario.getUsuarios().get(0));
         c1.setMensaje("prueba 1");
         comentarios.add(c1);
 
@@ -329,7 +329,7 @@ public class EventoBean implements Serializable {
         c1.setEvento(eventos.get(0));
         c1.setFecha(new Date(2017, 3, 30));
         c1.setHora(new Time(18, 17, 0));
-        c1.setUsuario(usuario);
+        c1.setUsuario(usuario.getUsuarios().get(0));
         c1.setMensaje("prueba 2");
         comentarios.add(c1);
 
@@ -338,11 +338,28 @@ public class EventoBean implements Serializable {
         c1.setEvento(eventos.get(0));
         c1.setFecha(new Date(2017, 3, 30));
         c1.setHora(new Time(18, 24, 0));
-        c1.setUsuario(usuario);
+        c1.setUsuario(usuario.getUsuarios().get(0));
         c1.setMensaje("prueba 3");
         comentarios.add(c1);
 
         eventos.get(0).setComentarios(comentarios);
+        
+        evento_asiste = new ArrayList<>();
+        evento_asiste.add(eventos.get(0));
+        evento_asiste.add(eventos.get(1));
+        usuario.getUsuarios().get(0).setAsiste(evento_asiste);
+        
+        
+        evento_gusta = new ArrayList<>();
+        evento_gusta.add(eventos.get(2));
+        evento_gusta.add(eventos.get(3));
+        usuario.getUsuarios().get(1).setMegusta(evento_gusta);
+        
+        
+        evento_sigue = new ArrayList<>();
+        evento_sigue.add(eventos.get(4));
+        evento_sigue.add(eventos.get(5));
+        usuario.getUsuarios().get(2).setSigue(evento_sigue);
     }
 
     public List<Evento> getEventosProximos() {
@@ -511,13 +528,11 @@ public class EventoBean implements Serializable {
         return s;
     }
     
-    public String sendNotification(String o){
-        FacesContext context = FacesContext.getCurrentInstance();
-        Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
-        String projectId = paramMap.get("event");
+    public String sendNotification(){
+        System.out.println(this.evento_info);
+        System.out.println(this.event_type);
+        System.out.println();
         
-        System.out.println("event " + projectId + "\n\n\n");
-        return null;
 //        String s1 = "" + evento_info;
 //        String s2 = "" + o;
 //        
@@ -554,7 +569,7 @@ public class EventoBean implements Serializable {
 //            }
 //        }
 //        System.out.println("terminado");
-//        return "event_info?event="+evento_info+"?faces-redirect=true";
+        return "event_info?event="+evento_info+"?faces-redirect=true";
     }
 
     public String getEvento_info() {
@@ -563,6 +578,38 @@ public class EventoBean implements Serializable {
 
     public void setEvento_info(String evento_info) {
         this.evento_info = evento_info;
+    }
+
+    public int getEvent_type() {
+        return event_type;
+    }
+
+    public void setEvent_type(int event_type) {
+        this.event_type = event_type;
+    }
+
+    public List<Evento> getEvento_asiste() {
+        return evento_asiste;
+    }
+
+    public void setEvento_asiste(List<Evento> evento_asiste) {
+        this.evento_asiste = evento_asiste;
+    }
+
+    public List<Evento> getEvento_gusta() {
+        return evento_gusta;
+    }
+
+    public void setEvento_gusta(List<Evento> evento_gusta) {
+        this.evento_gusta = evento_gusta;
+    }
+
+    public List<Evento> getEvento_sigue() {
+        return evento_sigue;
+    }
+
+    public void setEvento_sigue(List<Evento> evento_sigue) {
+        this.evento_sigue = evento_sigue;
     }
     
     

@@ -12,7 +12,8 @@
                 <h:form id="form">
                     <p:tabView orientation="right" dynamic="true" cache="true" styleClass="panelusuario" >
                         <p:tab title="Mis Eventos" >
-                            <c:forEach var="item" items="#{eventoBean.eventos}">
+                            <h2>Eventos al que vas a asistir</h2>
+                            <c:forEach var="item" items="#{eventoBean.evento_asiste}">
                                 <p:panelGrid styleClass="mis_eventos" >
                                     <p:row>
                                         <p:column rowspan="2">
@@ -25,16 +26,44 @@
                                                     <f:param name="event" value="#{item.id_evento}" />
                                                 </h:link>
                                             </h3>
-
                                         </p:column>
                                     </p:row>
-                                    <!--
+                                </p:panelGrid>
+                            </c:forEach>
+                            <br/><h2>Eventos que estas siguiendo</h2>
+                            <c:forEach var="item" items="#{eventoBean.evento_sigue}">
+                                <p:panelGrid styleClass="mis_eventos" >
                                     <p:row>
+                                        <p:column rowspan="2">
+                                            <p:graphicImage class="event-image" name="#{item.imagen_url}" width="100" height="100"/>
+                                        </p:column>
                                         <p:column>
-                                            <h:outputLabel value="#{item.descripcion}" />
+
+                                            <h3 class="eventTitle" style="text-align: right">
+                                                <h:link value="#{item.titulo}" outcome="event_info" >
+                                                    <f:param name="event" value="#{item.id_evento}" />
+                                                </h:link>
+                                            </h3>
                                         </p:column>
                                     </p:row>
-                                    -->
+                                </p:panelGrid>
+                            </c:forEach>
+                            <br/><h2>Eventos que te gustan</h2>
+                            <c:forEach var="item" items="#{eventoBean.evento_gusta}">
+                                <p:panelGrid styleClass="mis_eventos" >
+                                    <p:row>
+                                        <p:column rowspan="2">
+                                            <p:graphicImage class="event-image" name="#{item.imagen_url}" width="100" height="100"/>
+                                        </p:column>
+                                        <p:column>
+
+                                            <h3 class="eventTitle" style="text-align: right">
+                                                <h:link value="#{item.titulo}" outcome="event_info" >
+                                                    <f:param name="event" value="#{item.id_evento}" />
+                                                </h:link>
+                                            </h3>
+                                        </p:column>
+                                    </p:row>
                                 </p:panelGrid>
                             </c:forEach>
                         </p:tab>
