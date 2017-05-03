@@ -99,11 +99,11 @@ public class RegBean implements Serializable {
             }
             
             
-            return "registration.xhtml";
+            return "registration?faces-redirect=true";
         }
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Registrado satisfactoriamente"));
         
-        return "login.xhtml";
+        return "login?faces-redirect=true";
     }
     
     public void addMessage() {

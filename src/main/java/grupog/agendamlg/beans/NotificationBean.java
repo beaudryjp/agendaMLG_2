@@ -40,8 +40,8 @@ public class NotificationBean implements Serializable {
         
     
         
-         Notificacion not_2 = new Notificacion();
-         not_2.setId_notificacion(1L);
+        Notificacion not_2 = new Notificacion();
+        not_2.setId_notificacion(1L);
         not_2.setMensaje("El evento ha sido cancelado de nuevo.");
         not_2.setFecha(new Date(System.currentTimeMillis()));
 
@@ -49,7 +49,7 @@ public class NotificationBean implements Serializable {
     
         notificaciones.add(not_2);
         
-        System.out.println(notificaciones.get(1).getMensaje());
+        //System.out.println(notificaciones.get(1).getMensaje());
     }
 
     public void dissapear(Notificacion not) {

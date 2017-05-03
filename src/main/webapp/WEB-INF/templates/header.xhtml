@@ -41,7 +41,7 @@
         <!--Normal  menu, big screen-->
         <section id="header-option-icons">
             <ul class="icons">
-                <li><h:link value="Eventos" outcome="events_all.xhtml"  class="icon fa-calendar"/></li>
+                <li><h:link value="Eventos" outcome="events_tags.xhtml?tag=Todos"  class="icon fa-calendar"/></li>
                 <c:choose>
                     <c:when test="#{ControlLog.usuario.getRol_usuario() == 'REDACTOR' || ControlLog.usuario.getRol_usuario() == 'VALIDADO'  || ControlLog.usuario.getRol_usuario() == 'REGISTRADO'}">
                         <li><h:link value="Perfil" outcome="profile"  class="icon fa-user-circle"/></li>               

@@ -6,21 +6,24 @@
 package grupog.agendamlg.beans;
 
 import grupog.agendamlg.entities.Usuario;
+import grupog.agendamlg.mail.Sendmail;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
-import javax.faces.bean.ManagedBean;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.mail.internet.AddressException;
 
 /**
  *
  * @author Susana
  */
 @Named(value = "login")
-@RequestScoped
+@SessionScoped
 public class Usuariobean implements Serializable {
 
     private String email;
@@ -39,14 +42,17 @@ public class Usuariobean implements Serializable {
         Usuario usuario = new Usuario("Susana", "LJ", "SLJ@gmail.com");
         usuario.setRol_usuario(Usuario.Tipo_Rol.REGISTRADO);
         usuario.setPassword_hash("potato");
+        usuario.setEmail_notifier(true);
 
         Usuario usuario1 = new Usuario("Marie", "Poppo", "Poppo@gmail.com");
         usuario1.setRol_usuario(Usuario.Tipo_Rol.REDACTOR);
         usuario1.setPassword_hash("potato");
+        usuario1.setEmail_notifier(true);
 
         Usuario usuario2 = new Usuario("Pepe", "Patata", "Pepe@patata.com");
         usuario2.setRol_usuario(Usuario.Tipo_Rol.VALIDADO);
         usuario2.setPassword_hash("potato");
+        usuario2.setEmail_notifier(true);
 
         usuarios.add(usuario);
         usuarios.add(usuario1);
@@ -78,7 +84,7 @@ public class Usuariobean implements Serializable {
 
     public String autenticar() {
 
-        String authentication_result_site = "login.xhtml";
+        String authentication_result_site = "login?faces-redirect=true";
         for (Usuario index_user : usuarios) {
             if (index_user.getEmail().equals(email) && index_user.getPassword_hash().equals(contrasenia)) {
                 ctrl.setUsuario(index_user);
@@ -91,5 +97,32 @@ public class Usuariobean implements Serializable {
         }
 
         return authentication_result_site;
+    }
+
+    public String resetPassword(String em) {
+        String password = "123456";
+        String message = "Se ha reseteado la contraseña a " + password
+                + "\n\nCambie la contraseña en cuanto sea posible. Fuck you";
+        /*
+        try {
+            Sendmail.mail("", "Reseteo de la contraseña", message);
+        } catch (AddressException ex) {
+            Logger.getLogger(Usuariobean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        */
+        for(Usuario x : usuarios){
+            if(x.getEmail().equals(em)){
+                x.setPassword_hash(password);
+                try {
+                    Sendmail.mail(x.getEmail(), "Reseteo de la contraseña", message);
+                } catch (AddressException ex) {
+                    Logger.getLogger(Usuariobean.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                break;
+            }
+            
+        }
+        
+        return "index?faces-redirect=true";
     }
 }

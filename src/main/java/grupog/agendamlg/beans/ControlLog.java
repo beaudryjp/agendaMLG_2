@@ -32,10 +32,10 @@ public class ControlLog implements Serializable {
 
     public String home() {
 
-        String pageToShow = "login.xhtml";
+        String pageToShow = "login?faces-redirect=true";
 
         if (usuario.getRol_usuario() != null) {
-            pageToShow = "profile.xhtml";
+            pageToShow = "profile?faces-redirect=true";
         }
 
         return pageToShow;

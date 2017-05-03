@@ -7,6 +7,7 @@ import grupog.agendamlg.entities.Evento;
 import grupog.agendamlg.entities.Localidad;
 import grupog.agendamlg.entities.Provincia;
 import grupog.agendamlg.entities.Usuario;
+import grupog.agendamlg.mail.Sendmail;
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -14,11 +15,16 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import javax.mail.internet.AddressException;
 import org.primefaces.model.UploadedFile;
 import org.primefaces.model.tagcloud.DefaultTagCloudItem;
 import org.primefaces.model.tagcloud.DefaultTagCloudModel;
@@ -29,12 +35,14 @@ import org.primefaces.model.tagcloud.TagCloudModel;
  * @author Jean Paul Beaudry
  */
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class EventoBean implements Serializable {
 
     /**
      * Creates a new instance of EventoBean
      */
+    @Inject
+    private ControlLog current_user;
     private TagCloudModel model;
     private List<Evento> eventos;
     private List<Etiqueta> etiquetas;
@@ -52,6 +60,7 @@ public class EventoBean implements Serializable {
     private String searchEtiqueta;
     private String searchText;
     private String tag;
+    private String evento_info;
     private UploadedFile uploadedPicture;
 
     public EventoBean() {
@@ -415,7 +424,11 @@ public class EventoBean implements Serializable {
     }
 
     public Evento getEvento(String e) {
-        return eventos.get(Integer.parseInt(e));
+        try{
+            return eventos.get(Integer.parseInt(e));
+        }catch(NumberFormatException n){
+            return null;
+        }
     }
     
     public int getId()
@@ -497,4 +510,60 @@ public class EventoBean implements Serializable {
         }
         return s;
     }
+    
+    public String sendNotification(String o){
+        FacesContext context = FacesContext.getCurrentInstance();
+        Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
+        String projectId = paramMap.get("event");
+        
+        System.out.println("event " + projectId + "\n\n\n");
+        return null;
+//        String s1 = "" + evento_info;
+//        String s2 = "" + o;
+//        
+//        System.out.println("evento " + s1);
+//        System.out.println("opcion " + o);
+//        
+//        Usuario u = current_user.getUsuario();
+//        
+//        Evento ev = eventos.get(Integer.parseInt(s1));
+//        System.out.println("usuario " + u.getNombre());
+//        System.out.println("titulo " + ev.getTitulo());
+//        System.out.println();
+//        String message = "";
+//        switch(Integer.parseInt(s2)){
+//            case 0:
+//                message = "Has pinchado like en el evento " + ev.getTitulo();
+//                break;
+//            case 1:
+//                message = "Has indicado que vas a asistir al evento " + ev.getTitulo() + "\n"
+//                        + "Hora: " + ev.getHorario() + " Precio: " + ev.getPrecio();
+//                break;
+//            case 2:
+//                message = "Has indicado que quieres seguir al evento " + ev.getTitulo() + "\n"
+//                        + "Hora: " + ev.getHorario() + " Precio: " + ev.getPrecio();
+//                break;
+//        }
+//        System.out.println(u.isEmail_notifier());
+//        if(u.isEmail_notifier()){
+//            try {
+//                System.out.println("send mail");
+//                Sendmail.mail(u.getEmail(), "Notificaion: " + ev.getTitulo(), message);
+//            } catch (AddressException ex) {
+//                Logger.getLogger(EventoBean.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
+//        System.out.println("terminado");
+//        return "event_info?event="+evento_info+"?faces-redirect=true";
+    }
+
+    public String getEvento_info() {
+        return evento_info;
+    }
+
+    public void setEvento_info(String evento_info) {
+        this.evento_info = evento_info;
+    }
+    
+    
 }
