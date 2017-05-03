@@ -8,8 +8,8 @@ package grupog.agendamlg.beans;
 import grupog.agendamlg.entities.Usuario;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
 /**
@@ -17,7 +17,7 @@ import javax.inject.Inject;
  */
 
 @ManagedBean(name = "configuracion")
-@ViewScoped
+@SessionScoped
 public class ConfigurationBean implements Serializable {
     private Usuario usuario;
     private String email;
