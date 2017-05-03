@@ -88,8 +88,8 @@ public class Usuariobean implements Serializable {
         for (Usuario index_user : usuarios) {
             if (index_user.getEmail().equals(email) && index_user.getPassword_hash().equals(contrasenia)) {
                 ctrl.setUsuario(index_user);
-                conf.setControl(ctrl);
-                conf.setUsuario(ctrl.getUsuario());
+//                conf.setControl(ctrl);
+//                conf.setUsuario(ctrl.getUsuario());
                 authentication_result_site = ctrl.home();
 
                 break;

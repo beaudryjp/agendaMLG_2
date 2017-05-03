@@ -1,22 +1,23 @@
 package grupog.agendamlg.beans;
 
+import date.DateUtils;
 import grupog.agendamlg.entities.Comentario;
 import grupog.agendamlg.entities.Destinatario;
 import grupog.agendamlg.entities.Etiqueta;
 import grupog.agendamlg.entities.Evento;
 import grupog.agendamlg.entities.Localidad;
 import grupog.agendamlg.entities.Provincia;
-import grupog.agendamlg.entities.Usuario;
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 import java.util.Random;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import org.primefaces.model.UploadedFile;
@@ -29,7 +30,7 @@ import org.primefaces.model.tagcloud.TagCloudModel;
  * @author Jean Paul Beaudry
  */
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class EventoBean implements Serializable {
 
     /**
@@ -52,15 +53,15 @@ public class EventoBean implements Serializable {
     private List<Destinatario> publico_evento4;
     private List<Comentario> comentarios;
     private int evento;
-    private Date fecha;
+    private LocalDate fecha;
     private String searchProvincia;
     private String searchLocalidad;
     private String searchDestinatario;
     private String searchEtiqueta;
     private String searchText;
     private String tag;
-    private String evento_info;
-    private int event_type;
+    private String evento_info = "0";
+    private String event_type = "0";
     private UploadedFile uploadedPicture;
 
     public EventoBean() {
@@ -109,13 +110,13 @@ public class EventoBean implements Serializable {
                 + "Norwegian Wood y Los años de peregrinación del chico sin color—, y las personalísimas obras De qué hablo cuando hablo de correr, Underground, "
                 + "y De qué hablo cuando hablo de escribir, así como cuatro volúmenes de relatos: Sauce ciego, mujer dormida, "
                 + "Después del terremoto, Hombres sin mujeres y El elefante desaparece.",
-                new Date(2017, 6, 1), new Date(2017, 6, 3), "10:00 - 11:00", "gratis", 36.7203713, -4.4248549, true, localidad));
+                DateUtils.asDate(LocalDate.of(2017, Month.JUNE, 1)), DateUtils.asDate(LocalDate.of(2017, Month.JUNE, 3)), "10:00 - 11:00", "gratis", 36.7203713, -4.4248549, true, localidad));
         eventos.add(new Evento("El Bosco: Vida y Obra", "La exposición que conmemora el V centenario de la muerte del Bosco, una ocasión irrepetible "
                 + "para disfrutar del  extraordinario grupo de las ocho pinturas de su mano que se conservan en España junto a excelentes obras procedentes "
                 + "de colecciones y museos de todo el mundo. Se trata del repertorio más completo del Bosco, uno de los artistas más enigmáticos e influyentes "
                 + "del Renacimiento, que invita al público a adentrarse en su personal visión del mundo a través de un montaje expositivo espectacular "
                 + "que presenta exentos sus trípticos más relevantes para que se puedan contemplar tanto el anverso como el reverso.",
-                new Date(2017, 6, 2), new Date(2017, 8, 2), "10:00 - 22:00", "5€", 36.7135979, -4.42488000000003, true, localidad));
+                DateUtils.asDate(LocalDate.of(2017, Month.JUNE, 2)), DateUtils.asDate(LocalDate.of(2017, Month.AUGUST, 2)), "10:00 - 22:00", "5€", 36.7135979, -4.42488000000003, true, localidad));
         eventos.add(new Evento("Concierto: Reflets Trio", "Podremos disfrutar de un concierto de flauta travesera, viola y arpa, a cargo de Reflets Trio. "
                 + "Vivimos en una sociedad en la que escuchar, respetar y compartir son las bases para su funcionamiento. "
                 + "La música de cámara es la representación artística de los pilares de dicha sociedad. Su función es inculcar los valores que nos unen y hacen humanos. "
@@ -123,14 +124,14 @@ public class EventoBean implements Serializable {
                 + "En este festival se mostrará en los más altos niveles de ejecución artística. El público malagueño será obsequiado con una "
                 + "música e interpretación que harán crecer su sabiduría artística y musical. Les será transmitidos unos principios artísticos que serán el presente "
                 + "y futuro de la creación cultural.",
-                new Date(2017, 5, 28), new Date(2017, 5, 28), "19:00 - 20:00", "gratis", 36.7268091, -4.4261242, false, localidad));
+                DateUtils.asDate(LocalDate.of(2017, Month.MAY, 28)), DateUtils.asDate(LocalDate.of(2017, Month.MAY, 28)), "19:00 - 20:00", "gratis", 36.7268091, -4.4261242, false, localidad));
         eventos.add(new Evento("Encuentros con el Autor. Andrés Neuman", "Uno de los escritores más interesantes y con mayor proyección de las "
                 + "letras españolas visita la Biblioteca Pública arroyo de la Miel para charlar y compartir impresiones sobre sus obras. Neuman poeta\n\n"
                 + "Ante la pregunta ¿quién es Neuman poeta? dijo: Redescubrir el asombro de lo elemental, subrayar una palabra reparando en su extrañeza es “ser poeta”. "
                 + "Pero confiesa tener el apetito y el vicio de probar todos los moldes, lenguajes, estilos. "
                 + "Hay que morirse habiendo intentado un aforismo, una novela, un poema, un haiku, etcétera.\n\n\n\n"
                 + "Y de la misma forma ve las dos caras del oficio: “La palabra atornilla al asiento y también mueve por dentro, significa hacer un viaje interior”.",
-                new Date(2017, 5, 30), new Date(2017, 5, 30), "20:00 - 22:00", "10€", 36.594771, -4.5320213, false, localidad2));
+                DateUtils.asDate(LocalDate.of(2017, Month.MAY, 30)), DateUtils.asDate(LocalDate.of(2017, Month.MAY, 30)), "20:00 - 22:00", "10€", 36.594771, -4.5320213, false, localidad2));
         eventos.add(new Evento("Taller de pintura de paisaje al aire libre", "Taller de pintura de paisaje al aire libre."
                 + "El Ayuntamiento de Alhaurín de la Torre, a través del Área Sociocultural y Servicios, "
                 + "informa que está abierto el plazo de inscripción para el taller de “Pintura de Paisaje al Aire Libre” que se impartirá "
@@ -147,7 +148,7 @@ public class EventoBean implements Serializable {
                 + "El precio de esta actividad es de 10 euros, más 3 euros para materiales. \n\n"
                 + "Las personas interesadas pueden realizar la inscripción llamando al número de teléfono 635 823 692, "
                 + "en el correo info@artmuseum.es ó a través de la web de La Térmica: www.latermicamalaga.com",
-                new Date(2017, 6, 4), new Date(2017, 6, 3), "10:00 - 14:00", "13€", 36.661575, -4.5715127, false, localidad3));
+                DateUtils.asDate(LocalDate.of(2017, Month.JUNE, 3)), DateUtils.asDate(LocalDate.of(2017, Month.JUNE, 6)), "10:00 - 14:00", "13€", 36.661575, -4.5715127, false, localidad3));
         eventos.add(new Evento("El otro Bigas Luna: La seducción de lo tangible", " 'El otro Bigas Luna' ofrece por vez primera un recorrido multidisciplinar "
                 + "por más de un centenar de obras que completan de una manera global la figura de este enigmático Artista y Cineasta. "
                 + "La muestra ofrece la trayectoria vital de Bigas Luna a partir de su imaginario genuino, el cual cultivó en paralelo a su creación "
@@ -155,7 +156,7 @@ public class EventoBean implements Serializable {
                 + "y que junto al libro que la acompaña van a revelar al gran público ese 'otro' Bigas Luna que sin duda resulta imprescindible "
                 + "para entender el controvertido y apasionante personaje en toda su dimensión vital y creativa. "
                 + "Málaga se convierte en el punto de partida de esta exposición itinerante que mostrará al 'otro Bigas Luna'.",
-                new Date(2017, 5, 5), new Date(2017, 6, 5), "10:00 - 14:00 y 17:00 - 20:00", "gratis", 36.7211581, -4.4147584, false, localidad));
+                DateUtils.asDate(LocalDate.of(2017, Month.MAY, 5)), DateUtils.asDate(LocalDate.of(2017, Month.JUNE, 5)), "10:00 - 14:00 y 17:00 - 20:00", "gratis", 36.7211581, -4.4147584, false, localidad));
         eventos.add(new Evento("Malaca y su pasado romano", "Sábado 6. Taller Pequeños Musivarios. Realizados a base de piezas cúbicas denominadas teselas, "
                 + "los mosaicos eran uno de los elementos arquitectónicos más bellos y representativos del mundo romano. "
                 + "Con este taller nos atreveremos a hacer uno de ellos con temática geométrica que hará las delicias de los más pequeños. "
@@ -166,24 +167,24 @@ public class EventoBean implements Serializable {
                 + "En este taller realizaremos un fresco que podría decorar una de las villas más suntuosas. Sábado 27. Juegos en Roma. "
                 + "Muchos de los juegos de mesa a los que estamos acostumbrados a jugar en la actualidad se crearon en la antigua Roma. "
                 + "En este divertido taller los descubriremos y aprenderemos a jugar como los niños romanos lo hacían hace 2.000 años.",
-                new Date(2017, 5, 22), new Date(2017, 5, 29), "11:00 - 12:30 y 12:30 - 14:00", "8€", 36.7211581, -4.4147584, true, localidad));
+                DateUtils.asDate(LocalDate.of(2017, Month.MAY, 22)), DateUtils.asDate(LocalDate.of(2017, Month.MAY, 29)), "11:00 - 12:30 y 12:30 - 14:00", "8€", 36.7211581, -4.4147584, true, localidad));
         eventos.add(new Evento("CUENTACUENTO EL MAGO DE OZ", "El MIMMA, junto con el grupo 'Donde viven los cuentos', "
                 + "presentan esta adaptación musical basada en el primer de los libros de Oz, del escritor estadounidense Lyman Frank Baum. "
                 + "Una de las historias más célebres y fascinantes de la literatura infantil de todos los tiempos, narrada a través de sus protagonistas.",
-                new Date(2017, 5, 29), new Date(2017, 5, 29), "12:00 - 14:00", "5€", 36.7233145, -4.421965, false, localidad));
+                DateUtils.asDate(LocalDate.of(2017, Month.MAY, 29)), DateUtils.asDate(LocalDate.of(2017, Month.MAY, 29)), "12:00 - 14:00", "5€", 36.7233145, -4.421965, false, localidad));
         eventos.add(new Evento("Arte contemporáneo para niños", "Queremos acercar de manera lúdica a los más pequeños el gusto por el arte actual con "
                 + "ejemplos prácticos. Los artistas analizados serán Evrnesto Neto(Brasil), Annete Messager (Francia), Takashi Murakami (Japón), "
                 + "RomeroBritto (Brasil) - duración: una sesión de 3h",
-                new Date(2017, 5, 13), new Date(2017, 5, 13), "13:30 - 16:30", "5€", 36.6285609, -4.4999552, false, localidad4));
+                DateUtils.asDate(LocalDate.of(2017, Month.MAY, 13)), DateUtils.asDate(LocalDate.of(2017, Month.MAY, 13)), "13:30 - 16:30", "5€", 36.6285609, -4.4999552, false, localidad4));
         eventos.add(new Evento("Cultura Urbana Hip Hop", "¿Te interesa el hip-hop y quieres saber más? "
                 + "¿Sientes que la cultura urbana te rodea pero no acabas de entenderla ni disfrutarla por completo? "
                 + "Descubre una nueva manera de mirar el arte y la vida, pues las calles por las que te mueves suelen tener tanto interés como el mejor museo.",
-                new Date(2017, 5, 9), new Date(2017, 5, 9), "17:00 - 22:00", "5€", 36.7227918, -4.2866072, false, localidad5));
+                DateUtils.asDate(LocalDate.of(2017, Month.MAY, 9)), DateUtils.asDate(LocalDate.of(2017, Month.MAY, 9)), "17:00 - 22:00", "5€", 36.7227918, -4.2866072, false, localidad5));
         eventos.add(new Evento("Robotix", "ROBOTIX es una actividad innovadora para desarrollar las habilidades y competencias del siglo XXI, "
                 + "utilizando como plataforma la robótica de LEGO Education. Con más de 10 años de experiencia, LEGO Education ROBOTIX "
                 + "ofrece los mejores recursos educativos para crear experiencias de aprendizaje únicas con las que nuestros jóvenes "
                 + "desarrollarán las habilidades y competencias del S.XXI.",
-                new Date(2017, 5, 20), new Date(2017, 5, 20), "10:00 - 13:00", "gratis", 36.746682, -3.8804524, false, localidad6));
+                DateUtils.asDate(LocalDate.of(2017, Month.MAY, 20)), DateUtils.asDate(LocalDate.of(2017, Month.MAY, 20)), "10:00 - 13:00", "gratis", 36.746682, -3.8804524, false, localidad6));
 
         etiquetas.add(new Etiqueta("Actos académicos"));
         etiquetas.add(new Etiqueta("Conciertos"));
@@ -318,7 +319,7 @@ public class EventoBean implements Serializable {
 //        dt.
         c1.setId_comentario(0L);
         c1.setEvento(eventos.get(0));
-        c1.setFecha(new Date(2017, 3, 30));
+        c1.setFecha(DateUtils.asDate(LocalDate.of(2017, Month.MARCH, 30)));
         c1.setHora(new Time(18, 14, 0));
         c1.setUsuario(usuario.getUsuarios().get(0));
         c1.setMensaje("prueba 1");
@@ -327,7 +328,7 @@ public class EventoBean implements Serializable {
         c1 = new Comentario();
         c1.setId_comentario(1L);
         c1.setEvento(eventos.get(0));
-        c1.setFecha(new Date(2017, 3, 30));
+       c1.setFecha(DateUtils.asDate(LocalDate.of(2017, Month.MARCH, 30)));
         c1.setHora(new Time(18, 17, 0));
         c1.setUsuario(usuario.getUsuarios().get(0));
         c1.setMensaje("prueba 2");
@@ -336,7 +337,7 @@ public class EventoBean implements Serializable {
         c1 = new Comentario();
         c1.setId_comentario(2L);
         c1.setEvento(eventos.get(0));
-        c1.setFecha(new Date(2017, 3, 30));
+        c1.setFecha(DateUtils.asDate(LocalDate.of(2017, Month.MARCH, 30)));
         c1.setHora(new Time(18, 24, 0));
         c1.setUsuario(usuario.getUsuarios().get(0));
         c1.setMensaje("prueba 3");
@@ -399,7 +400,7 @@ public class EventoBean implements Serializable {
     public List<Evento> getEventosByFecha() {
         List<Evento> evf = new ArrayList<>();
         for (Evento x : eventos) {
-            if (x.getFecha_inicio() == fecha) {
+            if (x.getFecha_inicio() == DateUtils.asDate(fecha)) {
                 evf.add(x);
             }
         }
@@ -428,11 +429,11 @@ public class EventoBean implements Serializable {
         return s;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
@@ -528,12 +529,11 @@ public class EventoBean implements Serializable {
         return s;
     }
     
-    public String sendNotification(){
-        System.out.println(this.evento_info);
-        System.out.println(this.event_type);
+    public String sendNotification(String e){
+        System.out.println("Evento " + e);
         System.out.println();
         
-//        String s1 = "" + evento_info;
+//        String s1 = "" + e;
 //        String s2 = "" + o;
 //        
 //        System.out.println("evento " + s1);
@@ -569,7 +569,8 @@ public class EventoBean implements Serializable {
 //            }
 //        }
 //        System.out.println("terminado");
-        return "event_info?event="+evento_info+"?faces-redirect=true";
+        //return "event_info?event="+evento_info+"?faces-redirect=true";
+        return "index?faces-redirect=true";
     }
 
     public String getEvento_info() {
@@ -580,11 +581,11 @@ public class EventoBean implements Serializable {
         this.evento_info = evento_info;
     }
 
-    public int getEvent_type() {
+    public String getEvent_type() {
         return event_type;
     }
 
-    public void setEvent_type(int event_type) {
+    public void setEvent_type(String event_type) {
         this.event_type = event_type;
     }
 

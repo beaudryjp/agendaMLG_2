@@ -156,7 +156,7 @@ public class Evento implements Serializable, Comparable {
     }
 
     public Date getFecha_inicio() {
-        return new GregorianCalendar(fecha_inicio.getYear(), fecha_inicio.getMonth(), fecha_inicio.getDay()).getTime();
+        return this.fecha_inicio;
     }
 
     public void setFecha_inicio(Date fecha_inicio) {
@@ -164,7 +164,7 @@ public class Evento implements Serializable, Comparable {
     }
 
     public Date getFecha_fin() {
-        return new GregorianCalendar(fecha_fin.getYear(), fecha_fin.getMonth(), fecha_fin.getDay()).getTime();
+        return this.fecha_fin;
     }
 
     public void setFecha_fin(Date fecha_fin) {
